@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraMove : MonoBehaviour
 {
+    public float cameraMovementSpeed;
+
     private Vector3 Origin;
     private Vector3 Difference;
     private Vector3 ResetCamera;
@@ -12,14 +14,14 @@ public class CameraMove : MonoBehaviour
 
     private void Start()
     {
-        ResetCamera = Camera.main.transform.position;
+        ResetCamera = gameObject.transform.position;
     }
 
     private void LateUpdate()
     {
         if (Input.GetMouseButton(0))
         {
-            Difference = (Camera.main.ScreenToWorldPoint(Input.mousePosition)) - Camera.main.transform.position;
+            Difference = (Camera.main.ScreenToWorldPoint(Input.mousePosition)) - gameObject.transform.position;
             if (drag == false)
             {
                 drag = true;
@@ -34,11 +36,26 @@ public class CameraMove : MonoBehaviour
 
         if (drag)
         {
-            Camera.main.transform.position = Origin - Difference;
+            gameObject.transform.position = Origin - Difference;
         }
 
-        if (Input.GetKey(KeyCode.O))
-            Camera.main.transform.position = ResetCamera;
+        if (Input.GetKey(KeyCode.O)){
+            gameObject.transform.position = ResetCamera;
+        }
 
+        if (Input.GetKey(KeyCode.A)) {
+            transform.Translate(Vector3.left * cameraMovementSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.D)) {
+            transform.Translate(Vector3.right * cameraMovementSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.W)) {
+            transform.Translate(Vector3.forward * cameraMovementSpeed * Time.deltaTime);
+        }
+        if (Input.GetKey(KeyCode.S)) {
+            transform.Translate(Vector3.back * cameraMovementSpeed * Time.deltaTime);
+        }
+
+        transform.position = new Vector3(transform.position.x, 0, transform.position.z);
     }
 }
