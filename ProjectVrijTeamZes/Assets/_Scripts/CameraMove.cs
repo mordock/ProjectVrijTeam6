@@ -44,16 +44,16 @@ public class CameraMove : MonoBehaviour
         }
 
         if (Input.GetKey(KeyCode.A)) {
-            transform.Translate(Vector3.left * cameraMovementSpeed * Time.deltaTime);
+            transform.Translate((Vector3.left + Vector3.back) * cameraMovementSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.D)) {
-            transform.Translate(Vector3.right * cameraMovementSpeed * Time.deltaTime);
+            transform.Translate((Vector3.right + Vector3.forward) * cameraMovementSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.W)) {
-            transform.Translate(Vector3.forward * cameraMovementSpeed * Time.deltaTime);
+            transform.Translate((Vector3.forward + Vector3.left) * cameraMovementSpeed * Time.deltaTime);
         }
         if (Input.GetKey(KeyCode.S)) {
-            transform.Translate(Vector3.back * cameraMovementSpeed * Time.deltaTime);
+            transform.Translate((Vector3.back + Vector3.right)* cameraMovementSpeed * Time.deltaTime);
         }
 
         transform.position = new Vector3(transform.position.x, 0, transform.position.z);
