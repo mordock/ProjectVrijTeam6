@@ -23,14 +23,8 @@ public class EnclosureScript : MonoBehaviour
     {
         for (int i = 0; i < enclosureTiers.Length; i++)
         {
-            if (i == enclosureLevel)
-            {
-                enclosureTiers[i].SetActive(true);
-            }
-            else
-            {
                 enclosureTiers[i].SetActive(false);
-            }
+                enclosureTiers[enclosureLevel].SetActive(true);
         }
 
         for (int z = 0; z < upgradeCosts.Length; z++)
@@ -55,10 +49,10 @@ public class EnclosureScript : MonoBehaviour
             enclosureUI.SetActive(true);
         }
 
-        if (!currentlySelected && enclosureUI.activeSelf)
-        {
-            enclosureUI.SetActive(false);
-        }
+        //if (!currentlySelected && enclosureUI.activeSelf)
+        //{
+        //    enclosureUI.SetActive(false);
+        //}
 
         //Tijdelijke knop om de upgrades te testen tot we de UI met knoppen hebben. Druk op U om te upgraden.
         if (Input.GetKeyDown(KeyCode.U) && enclosureLevel < enclosureTiers.Length - 1)
@@ -66,7 +60,7 @@ public class EnclosureScript : MonoBehaviour
             AttemptUpgrade();
         }
 
-        if (earningTimer == 0)
+        if (earningTimer <= 0)
         {
             cameraHolder.GetComponent<PlayerInventory>().money += earningAmount;
             earningTimer = earningCooldown;
