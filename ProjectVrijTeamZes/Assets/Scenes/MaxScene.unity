@@ -482,7 +482,7 @@ MonoBehaviour:
   - {fileID: 870178395}
   - {fileID: 808443389}
   - {fileID: 213572637}
-  payoutTime: 3
+  maxMoneyTickTime: 0
   currentFoodValue: 0
   currentWorkSlider: 0
   currentToolSlider: 0
@@ -2207,7 +2207,7 @@ MonoBehaviour:
   - {fileID: 875854113}
   - {fileID: 2019613292}
   - {fileID: 2146447853}
-  payoutTime: 4
+  maxMoneyTickTime: 5
   currentFoodValue: 0
   currentWorkSlider: 0
   currentToolSlider: 0

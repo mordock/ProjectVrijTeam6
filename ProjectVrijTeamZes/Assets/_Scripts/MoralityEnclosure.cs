@@ -11,7 +11,7 @@ public class MoralityEnclosure : MonoBehaviour
     public float maxMoneyTickTime;
     [HideInInspector]
     public float currentFoodValue, currentWorkSlider, currentToolSlider;
-
+    public float toolMultiplier;
     //payout if food and work are both on 100%
     public int maxMaterialPayout;
     public int maxFoodCost, maxToolCost;
@@ -52,8 +52,6 @@ public class MoralityEnclosure : MonoBehaviour
         if(currentTime >= maxMoneyTickTime) {
             currentTime = 0;
             //remove money based on costs
-            Debug.Log(maxFoodCost * currentFoodValue);
-            Debug.Log(maxToolCost * currentToolSlider);
             moneyPayAmount = (int)((maxFoodCost * currentFoodValue) + (maxToolCost * currentToolSlider));
             GetComponent<EnclosureScript>().cameraHolder.GetComponent<PlayerInventory>().RemoveMoney(moneyPayAmount);
 
@@ -61,6 +59,9 @@ public class MoralityEnclosure : MonoBehaviour
             float foodPercentage = Map(currentFoodValue, 0, 1, 0, 0.67f);
             float workPercentage = Map(currentWorkSlider, 0, 1, 0, 0.33f);
             materialPayoutAmount = (int)((workPercentage + foodPercentage) * maxMaterialPayout);
+            float multipliedAmount = toolMultiplier * materialPayoutAmount;
+            Debug.Log(multipliedAmount);
+            materialPayoutAmount = (int)multipliedAmount;
             enclosureMaterial.GetComponent<BuildMaterial>().IncreaseAmount(materialPayoutAmount);
         }
     }

@@ -86,6 +86,7 @@ public class EnclosureManager : MonoBehaviour
     public void UpdateToolSlider(float value) {
         currentOpenEnclosure.GetComponent<MoralityEnclosure>().currentToolSlider = value;
         float multiplier = Map(value, 0, 1f, 1, 1.5f);
+        currentOpenEnclosure.GetComponent<MoralityEnclosure>().toolMultiplier = multiplier;
         multiplierText.text = "Material multiplier: " + multiplier.ToString("F2");
     }
 
