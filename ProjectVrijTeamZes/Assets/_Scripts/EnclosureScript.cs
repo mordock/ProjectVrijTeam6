@@ -18,6 +18,11 @@ public class EnclosureScript : MonoBehaviour
     public float earningCooldown;
 
     private int currentCost;
+    private GameObject gameManager;
+
+    private void Start() {
+        gameManager = GameObject.Find("GameManager");
+    }
 
     void Update()
     {
@@ -46,13 +51,8 @@ public class EnclosureScript : MonoBehaviour
         //UI pop-up
         if (currentlySelected && !enclosureUI.activeSelf)
         {
-            enclosureUI.SetActive(true);
+            gameManager.GetComponent<UiManager>().OpenEnclosureUI();
         }
-
-        //if (!currentlySelected && enclosureUI.activeSelf)
-        //{
-        //    enclosureUI.SetActive(false);
-        //}
 
         //Tijdelijke knop om de upgrades te testen tot we de UI met knoppen hebben. Druk op U om te upgraden.
         if (Input.GetKeyDown(KeyCode.U) && enclosureLevel < enclosureTiers.Length - 1)

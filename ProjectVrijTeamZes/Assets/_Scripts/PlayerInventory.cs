@@ -6,6 +6,7 @@ public class PlayerInventory : MonoBehaviour
 {
 
     public int money;
+    public List<int> moneyChanges;
 
     private void Update()
     {
@@ -26,7 +27,13 @@ public class PlayerInventory : MonoBehaviour
         {
             money++;
         }
-
     }
 
+    public void AddMoney(int addedValue) {
+        money += addedValue;
+    }
+
+    public void RemoveMoney(int removeValue) {
+        money -= removeValue;
+    }
 }

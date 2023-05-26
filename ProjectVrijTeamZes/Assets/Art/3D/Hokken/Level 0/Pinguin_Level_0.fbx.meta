@@ -7,6 +7,11 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: Bone
+    second: {fileID: 2100000, guid: e68ff880c4445fc4f99c6f8d1542e697, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Glass
     second: {fileID: 2100000, guid: 85562f7b5e22c424eb514977e086f03f, type: 2}
   - first:

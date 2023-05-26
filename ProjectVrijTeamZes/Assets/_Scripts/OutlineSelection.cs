@@ -68,9 +68,6 @@ public class OutlineSelection : MonoBehaviour
                     selection.gameObject.GetComponent<Outline>().enabled = false;
                     selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = false;
                     selection = null;
-
-                    gamemanager.GetComponent<EnclosureManager>().currentOpenEnclosure = null;
-                    //
                 }
             }
         }
