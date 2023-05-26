@@ -39,6 +39,8 @@ public class EnclosureManager : MonoBehaviour
             foodHappinessGainText.text = "+Happiness: " + happiness.ToString("F2");
             SetUnderFed();
             overUnderFedText.text = "UNDERFED!";
+            PopupManager.EnableUnderFedPopup();
+            PopupManager.DisableOverFedPopup();
             //under fed
             //0-10 happiness
             //minder health
@@ -48,6 +50,8 @@ public class EnclosureManager : MonoBehaviour
             foodHappinessGainText.text = "+Happiness: " + happiness.ToString("F2");
             SetOverFed();
             overUnderFedText.text = "OVERFED!";
+            PopupManager.EnableOverFedPopup();
+            PopupManager.DisableUnderFedPopup();
             //over fed
             //100-60 happinesss
             //minder health
@@ -57,6 +61,8 @@ public class EnclosureManager : MonoBehaviour
             foodHappinessGainText.text = "+Happiness: " + happiness.ToString("F2");
             SetRegularFood();
             overUnderFedText.text = "";
+            PopupManager.DisableOverFedPopup();
+            PopupManager.DisableUnderFedPopup();
             //between 0.4 and 0.9
             //10-100 happiness
         }
@@ -69,6 +75,7 @@ public class EnclosureManager : MonoBehaviour
             AddToHappinessChanges(happiness, 1);
             workHappinessLoseText.text = "-Happiness: " + happiness.ToString("F2");
             SetRegularWork();
+            PopupManager.DisableOverworkedPopup();
             //regular work
             //0- -40 happiness
         } else {
@@ -77,6 +84,7 @@ public class EnclosureManager : MonoBehaviour
             workHappinessLoseText.text = "-Happiness: " + happiness.ToString("F2");
             SetOverWorked();
             overWorkedText.text = "OVERWORKED!";
+            PopupManager.EnableOverworkedPopup();
             //over work
             //-40- -80 happiness
             //minder health

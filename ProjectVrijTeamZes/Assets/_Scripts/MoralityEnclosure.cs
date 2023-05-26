@@ -64,6 +64,18 @@ public class MoralityEnclosure : MonoBehaviour
             materialPayoutAmount = (int)multipliedAmount;
             enclosureMaterial.GetComponent<BuildMaterial>().IncreaseAmount(materialPayoutAmount);
         }
+
+        if(GetAverageAnimalHappiness() <= 50) {
+            PopupManager.EnableLowHappinessPopup();
+        } else {
+            PopupManager.DisableLowHappinessPopup();
+        }
+
+        if(GetAverageAnimalHealth() <= 30) {
+            PopupManager.EnableLowHealthPopup();
+        } else {
+            PopupManager.DisableLowHealthPopup();
+        }
     }
 
     //method used to display the happiness on the enclosure UI

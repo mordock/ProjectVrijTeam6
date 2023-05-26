@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialName: Leaf
-  materialAmount: 0
+  materialAmount: 20
