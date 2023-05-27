@@ -747,7 +747,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 187502851}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 516be56fece90b94e8c5bd3c3eb87576, type: 3}
   m_Name: 
@@ -756,17 +756,18 @@ MonoBehaviour:
   - {fileID: 870178395}
   - {fileID: 808443389}
   - {fileID: 213572637}
-  maxMoneyTickTime: 0
+  maxMoneyTickTime: 5
   currentFoodValue: 0
   currentWorkSlider: 0
   currentToolSlider: 0
   toolMultiplier: 0
-  maxMaterialPayout: 0
-  maxFoodCost: 0
-  maxToolCost: 0
+  maxMaterialPayout: 5
+  maxFoodCost: 10
+  maxToolCost: 15
   moneyPayAmount: 0
   materialPayoutAmount: 0
-  enclosureMaterial: {fileID: 7472141611321266786, guid: f120a5cc035b09641953fad04dbb1e7d, type: 3}
+  isCurrentEnclosure: 0
+  enclosureMaterial: {fileID: 5591414574153283340, guid: bfa5965c243d7614aab665bfdca86544, type: 3}
 --- !u!1 &213572636
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,6 +1437,34 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7205907821736368244, guid: 48a635735c30dd243892d13bec4696da, type: 3}
+--- !u!114 &476431067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 476431058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 516be56fece90b94e8c5bd3c3eb87576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animals:
+  - {fileID: 875854113}
+  - {fileID: 2019613292}
+  - {fileID: 2146447853}
+  maxMoneyTickTime: 5
+  currentFoodValue: 0
+  currentWorkSlider: 0
+  currentToolSlider: 0
+  toolMultiplier: 0
+  maxMaterialPayout: 5
+  maxFoodCost: 7
+  maxToolCost: 8
+  moneyPayAmount: 0
+  materialPayoutAmount: 0
+  isCurrentEnclosure: 0
+  enclosureMaterial: {fileID: 5591414574153283340, guid: bfa5965c243d7614aab665bfdca86544, type: 3}
 --- !u!1 &485226905
 GameObject:
   m_ObjectHideFlags: 0
@@ -3060,6 +3089,34 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8068268169109706480, guid: 3d855b24929f5154b892c50ab72a2989, type: 3}
+--- !u!114 &695320426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 695320417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 516be56fece90b94e8c5bd3c3eb87576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animals:
+  - {fileID: 875854113}
+  - {fileID: 2019613292}
+  - {fileID: 2146447853}
+  maxMoneyTickTime: 5
+  currentFoodValue: 0
+  currentWorkSlider: 0
+  currentToolSlider: 0
+  toolMultiplier: 0
+  maxMaterialPayout: 5
+  maxFoodCost: 7
+  maxToolCost: 8
+  moneyPayAmount: 0
+  materialPayoutAmount: 0
+  isCurrentEnclosure: 0
+  enclosureMaterial: {fileID: 5591414574153283340, guid: bfa5965c243d7614aab665bfdca86544, type: 3}
 --- !u!1 &727011341
 GameObject:
   m_ObjectHideFlags: 0
@@ -3443,6 +3500,7 @@ MonoBehaviour:
   maxToolCost: 8
   moneyPayAmount: 0
   materialPayoutAmount: 0
+  isCurrentEnclosure: 0
   enclosureMaterial: {fileID: 5591414574153283340, guid: bfa5965c243d7614aab665bfdca86544, type: 3}
 --- !u!1 &788736309 stripped
 GameObject:
@@ -3503,6 +3561,34 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 1450218668402036707, guid: 73dae668cb8d07541a15060bca40ad1d, type: 3}
+--- !u!114 &788736318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788736309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 516be56fece90b94e8c5bd3c3eb87576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animals:
+  - {fileID: 875854113}
+  - {fileID: 2019613292}
+  - {fileID: 2146447853}
+  maxMoneyTickTime: 5
+  currentFoodValue: 0
+  currentWorkSlider: 0
+  currentToolSlider: 0
+  toolMultiplier: 0
+  maxMaterialPayout: 5
+  maxFoodCost: 7
+  maxToolCost: 8
+  moneyPayAmount: 0
+  materialPayoutAmount: 0
+  isCurrentEnclosure: 0
+  enclosureMaterial: {fileID: 5591414574153283340, guid: bfa5965c243d7614aab665bfdca86544, type: 3}
 --- !u!1 &802782086
 GameObject:
   m_ObjectHideFlags: 0
@@ -8726,6 +8812,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2671169648107470932, guid: 51081ef437656dc44a969722aa4d4102, type: 3}
       insertIndex: -1
       addedObject: {fileID: 788736314}
+    - targetCorrespondingSourceObject: {fileID: 2671169648107470932, guid: 51081ef437656dc44a969722aa4d4102, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 788736318}
     - targetCorrespondingSourceObject: {fileID: 4684888587172203866, guid: 51081ef437656dc44a969722aa4d4102, type: 3}
       insertIndex: -1
       addedObject: {fileID: 752731088}
@@ -8741,12 +8830,18 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7370789299089782104, guid: 51081ef437656dc44a969722aa4d4102, type: 3}
       insertIndex: -1
       addedObject: {fileID: 476431063}
+    - targetCorrespondingSourceObject: {fileID: 7370789299089782104, guid: 51081ef437656dc44a969722aa4d4102, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 476431067}
     - targetCorrespondingSourceObject: {fileID: 4660856470580398591, guid: 51081ef437656dc44a969722aa4d4102, type: 3}
       insertIndex: -1
       addedObject: {fileID: 695320421}
     - targetCorrespondingSourceObject: {fileID: 4660856470580398591, guid: 51081ef437656dc44a969722aa4d4102, type: 3}
       insertIndex: -1
       addedObject: {fileID: 695320422}
+    - targetCorrespondingSourceObject: {fileID: 4660856470580398591, guid: 51081ef437656dc44a969722aa4d4102, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 695320426}
     - targetCorrespondingSourceObject: {fileID: 8056566982472161348, guid: 51081ef437656dc44a969722aa4d4102, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1198190303554087606}

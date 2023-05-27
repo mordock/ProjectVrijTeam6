@@ -70,15 +70,7 @@ public class EnclosureManager : MonoBehaviour
 
     public void UpdateWorkSlider(float value) {
         currentOpenEnclosure.GetComponent<MoralityEnclosure>().currentWorkSlider = value;
-        if (value < 0.8f) {
-            float happiness = Map(value, 0, 0.8f, 0, -40);
-            AddToHappinessChanges(happiness, 1);
-            workHappinessLoseText.text = "-Happiness: " + happiness.ToString("F2");
-            SetRegularWork();
-            PopupManager.DisableOverworkedPopup();
-            //regular work
-            //0- -40 happiness
-        } else {
+        if (value > 0.8f) {
             float happiness = Map(value, 0.8f, 1f, -40, -80);
             AddToHappinessChanges(happiness, 1);
             workHappinessLoseText.text = "-Happiness: " + happiness.ToString("F2");
@@ -88,6 +80,15 @@ public class EnclosureManager : MonoBehaviour
             //over work
             //-40- -80 happiness
             //minder health
+        } else {
+            float happiness = Map(value, 0, 0.8f, 0, -40);
+            AddToHappinessChanges(happiness, 1);
+            SetRegularWork();
+            overWorkedText.text = "";
+            workHappinessLoseText.text = "-Happiness: " + happiness.ToString("F2");
+            PopupManager.DisableOverworkedPopup();
+            //regular work
+            //0- -40 happiness
         }
     }
 
@@ -102,6 +103,7 @@ public class EnclosureManager : MonoBehaviour
         return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
     }
 
+    //add the actual values to animal happiness change
     private void AddToHappinessChanges(float happiness, int locataion) {
         currentOpenEnclosure.GetComponent<MoralityEnclosure>().animals.ForEach(animal => {
             animal.happinessChanges[locataion] = (int)happiness;

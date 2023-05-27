@@ -22,6 +22,7 @@ public class Animal : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //add 2 empty spots in the list for happiness changes
         happinessChanges.Add(0);
         happinessChanges.Add(0);
     }
@@ -30,6 +31,8 @@ public class Animal : MonoBehaviour
     void Update()
     {
         //movement logic here
+        //TODO
+
         //add happiness/health tick every x seconds
         currentTime += Time.deltaTime;
         if (currentTime >= happinessTickTime) {
@@ -38,9 +41,11 @@ public class Animal : MonoBehaviour
             UpdateHappinessAndHealth();
         }
 
+        //animal dies
         if(healthLevel <= 0) {
             Debug.Log("Yo " + animalName + " fcking died");
         }
+
         if(happinessLevel <= 0) {
             happinessLevel = 0;
         }
@@ -50,18 +55,18 @@ public class Animal : MonoBehaviour
         //reset happiness
         happinessLevel = 0;
 
-        //add actual change
+        //total happiness is done by adding all the changes to happiness(work and food for now)
         foreach (int change in happinessChanges) {
             happinessLevel += change;
         }
 
+        //animal is happy, health go up
         if (happinessLevel > 90) {
-            //health go up
             healthLevel++;
         }
 
+        //animal is unhappy, health go down
         if (happinessLevel < 50) {
-            //health go down
             healthLevel--;
         }
         //addition health damage when abused
