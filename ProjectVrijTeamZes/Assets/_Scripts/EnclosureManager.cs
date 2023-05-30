@@ -2,32 +2,42 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class EnclosureManager : MonoBehaviour
 {
     public GameObject currentOpenEnclosure;
     public TextMeshProUGUI happinessText, healthText, materialText;
-    public TextMeshProUGUI foodHappinessGainText, workHappinessLoseText, multiplierText;
-    public TextMeshProUGUI overUnderFedText, overWorkedText;
+    public TextMeshProUGUI happinessPercentage, workPercentage, multiplierText;
     public TextMeshProUGUI materialOutPutText, expenditureText;
+    public Image happinessBar, healthBar;
+    public TextMeshProUGUI enclosureName, animalNames;
 
     // Start is called before the first frame update
     void Start()
     {
-        overUnderFedText.text = "";
-        overWorkedText.text = "";
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        UpdateHappinessText();
-        UpdateHealthText();
+        UpdateHappinessPercentageUi();
+        UpdateHealthPercentageUi();
 
         //update material output
         if(currentOpenEnclosure != null){
             materialOutPutText.text = "Material Output: " + currentOpenEnclosure.GetComponent<MoralityEnclosure>().materialPayoutAmount.ToString("F2");
             expenditureText.text = "Expenditure: " + currentOpenEnclosure.GetComponent<MoralityEnclosure>().moneyPayAmount.ToString("F2");
+
+            //fill top bar with data
+            enclosureName.text = currentOpenEnclosure.GetComponent<EnclosureScript>().enclosureName;
+            string names = "";
+            foreach(Animal animal in currentOpenEnclosure.GetComponent<MoralityEnclosure>().animals) {
+                names += animal.animalName + ", ";
+            }
+            //remove last comma
+            animalNames.text = names.Remove(names.Length - 2);
         }
     }
 
@@ -36,9 +46,8 @@ public class EnclosureManager : MonoBehaviour
         if (value < 0.4f) {
             float happiness = Map(value, 0, 0.4f, 0, 10);
             AddToHappinessChanges(happiness, 0);
-            foodHappinessGainText.text = "+Happiness: " + happiness.ToString("F2");
+            happinessPercentage.text = happiness.ToString("F2") + "%";
             SetUnderFed();
-            overUnderFedText.text = "UNDERFED!";
             PopupManager.EnableUnderFedPopup();
             PopupManager.DisableOverFedPopup();
             //under fed
@@ -47,9 +56,8 @@ public class EnclosureManager : MonoBehaviour
         } else if(value > 0.9f) {
             float happiness = Map(value, 0.9f, 1.0f, 100, 60);
             AddToHappinessChanges(happiness, 0);
-            foodHappinessGainText.text = "+Happiness: " + happiness.ToString("F2");
+            happinessPercentage.text = happiness.ToString("F2") + "%";
             SetOverFed();
-            overUnderFedText.text = "OVERFED!";
             PopupManager.EnableOverFedPopup();
             PopupManager.DisableUnderFedPopup();
             //over fed
@@ -58,9 +66,8 @@ public class EnclosureManager : MonoBehaviour
         } else {
             float happiness = Map(value, 0.4f, 0.9f, 10, 100);
             AddToHappinessChanges(happiness, 0);
-            foodHappinessGainText.text = "+Happiness: " + happiness.ToString("F2");
+            happinessPercentage.text = happiness.ToString("F2") + "%";
             SetRegularFood();
-            overUnderFedText.text = "";
             PopupManager.DisableOverFedPopup();
             PopupManager.DisableUnderFedPopup();
             //between 0.4 and 0.9
@@ -73,9 +80,7 @@ public class EnclosureManager : MonoBehaviour
         if (value > 0.8f) {
             float happiness = Map(value, 0.8f, 1f, -40, -80);
             AddToHappinessChanges(happiness, 1);
-            workHappinessLoseText.text = "-Happiness: " + happiness.ToString("F2");
             SetOverWorked();
-            overWorkedText.text = "OVERWORKED!";
             PopupManager.EnableOverworkedPopup();
             //over work
             //-40- -80 happiness
@@ -84,19 +89,18 @@ public class EnclosureManager : MonoBehaviour
             float happiness = Map(value, 0, 0.8f, 0, -40);
             AddToHappinessChanges(happiness, 1);
             SetRegularWork();
-            overWorkedText.text = "";
-            workHappinessLoseText.text = "-Happiness: " + happiness.ToString("F2");
             PopupManager.DisableOverworkedPopup();
             //regular work
             //0- -40 happiness
         }
+        workPercentage.text = (value * 100).ToString("F2") + "%";
     }
 
     public void UpdateToolSlider(float value) {
         currentOpenEnclosure.GetComponent<MoralityEnclosure>().currentToolSlider = value;
         float multiplier = Map(value, 0, 1f, 1, 1.5f);
         currentOpenEnclosure.GetComponent<MoralityEnclosure>().toolMultiplier = multiplier;
-        multiplierText.text = "Material multiplier: " + multiplier.ToString("F2");
+        multiplierText.text = multiplier.ToString("F2") + "X";
     }
 
     float Map(float s, float a1, float a2, float b1, float b2) {
@@ -110,17 +114,19 @@ public class EnclosureManager : MonoBehaviour
         });
     }
 
-    public void UpdateHappinessText() {
+    public void UpdateHappinessPercentageUi() {
         if(currentOpenEnclosure != null){
             MoralityEnclosure enclosure = currentOpenEnclosure.GetComponent<MoralityEnclosure>();
-            happinessText.text = "Happiness: " + enclosure.GetAverageAnimalHappiness().ToString();
+            happinessText.text = enclosure.GetAverageAnimalHappiness().ToString() + "%";
+            happinessBar.fillAmount = enclosure.GetAverageAnimalHappiness() / 100;
         }
     }
 
-    public void UpdateHealthText() {
+    public void UpdateHealthPercentageUi() {
         if (currentOpenEnclosure != null) {
             MoralityEnclosure enclosure = currentOpenEnclosure.GetComponent<MoralityEnclosure>();
-            healthText.text = "Health: " + enclosure.GetAverageAnimalHealth().ToString();
+            healthText.text = enclosure.GetAverageAnimalHealth().ToString() + "%";
+            healthBar.fillAmount = enclosure.GetAverageAnimalHealth() / 100;
         }
     }
 

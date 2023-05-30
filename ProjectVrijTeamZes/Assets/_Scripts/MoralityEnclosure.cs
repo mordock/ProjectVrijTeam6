@@ -7,8 +7,6 @@ public class MoralityEnclosure : MonoBehaviour
 {
     public List<Animal> animals;
 
-    //this is time in sec when money and materials are added/removed
-    public float maxMoneyTickTime;
     [HideInInspector] public float currentFoodValue, currentWorkSlider, currentToolSlider;
     [HideInInspector] public float toolMultiplier;
     //payout if food and work are both on 100%
@@ -18,13 +16,8 @@ public class MoralityEnclosure : MonoBehaviour
     [HideInInspector] public int moneyPayAmount, materialPayoutAmount;
     [HideInInspector] public bool isCurrentEnclosure;
     public GameObject enclosureMaterial;
-
-    private float currentTime;
-    private GameObject gameManager;
     // Start is called before the first frame update
     void Start() {
-        gameManager = GameObject.Find("GameManager");
-
         //set inital food slider value
         currentFoodValue = 0.7f;
         float foodHappiness = Map(currentFoodValue, 0.4f, 0.9f, 10, 100);
@@ -45,27 +38,14 @@ public class MoralityEnclosure : MonoBehaviour
         });
 
         currentToolSlider = 0f;
+        toolMultiplier = 1;
+
+        //register for tick event
+        TickManager.DayTick += DayTick;
     }
 
     // Update is called once per frame
     void Update() {
-        currentTime += Time.deltaTime;
-        if (currentTime >= maxMoneyTickTime) {
-            currentTime = 0;
-
-            //remove money based on costs
-            moneyPayAmount = (int)((maxFoodCost * currentFoodValue) + (maxToolCost * currentToolSlider));
-            GetComponent<EnclosureScript>().cameraHolder.GetComponent<PlayerInventory>().RemoveMoney(moneyPayAmount);
-
-            //increase materials based on food and work percentage
-            float foodPercentage = Map(currentFoodValue, 0, 1, 0, 0.67f);
-            float workPercentage = Map(currentWorkSlider, 0, 1, 0, 0.33f);
-            materialPayoutAmount = (int)((workPercentage + foodPercentage) * maxMaterialPayout);
-            float multipliedAmount = toolMultiplier * materialPayoutAmount;
-            materialPayoutAmount = (int)multipliedAmount;
-            enclosureMaterial.GetComponent<BuildMaterial>().IncreaseAmount(materialPayoutAmount);
-        }
-
         if(isCurrentEnclosure){
             //show and remove low happiness popup
             if (GetAverageAnimalHappiness() <= 50) {
@@ -103,5 +83,23 @@ public class MoralityEnclosure : MonoBehaviour
     //map a number within a range to a different range
     float Map(float s, float a1, float a2, float b1, float b2) {
         return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
+    }
+
+    private void DayTick(TickManager tickManager) {
+        Debug.Log("TICK " + gameObject.name);
+
+        //remove money based on costs
+        moneyPayAmount = (int)((maxFoodCost * currentFoodValue) + (maxToolCost * currentToolSlider));
+        GetComponent<EnclosureScript>().cameraHolder.GetComponent<PlayerInventory>().RemoveMoney(moneyPayAmount);
+
+        //increase materials based on food and work percentage
+        float foodPercentage = Map(currentFoodValue, 0, 1, 0, 0.67f);
+        float workPercentage = Map(currentWorkSlider, 0, 1, 0, 0.33f);
+        materialPayoutAmount = (int)((workPercentage + foodPercentage) * maxMaterialPayout);
+        Debug.Log(toolMultiplier);
+        float multipliedAmount = toolMultiplier * materialPayoutAmount;
+        materialPayoutAmount = (int)multipliedAmount;
+        enclosureMaterial.GetComponent<BuildMaterial>().IncreaseAmount(materialPayoutAmount);
+        
     }
 }

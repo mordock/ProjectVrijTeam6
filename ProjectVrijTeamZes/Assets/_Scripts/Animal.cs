@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,15 +17,15 @@ public class Animal : MonoBehaviour
     //1-100
     public int happinessLevel;
 
-    private float happinessTickTime = 5f;
-    private float currentTime;
-
     // Start is called before the first frame update
     void Start()
     {
         //add 2 empty spots in the list for happiness changes
         happinessChanges.Add(0);
         happinessChanges.Add(0);
+
+        //register for tick event
+        TickManager.DayTick += DayTick;
     }
 
     // Update is called once per frame
@@ -32,14 +33,6 @@ public class Animal : MonoBehaviour
     {
         //movement logic here
         //TODO
-
-        //add happiness/health tick every x seconds
-        currentTime += Time.deltaTime;
-        if (currentTime >= happinessTickTime) {
-            currentTime = 0;
-
-            UpdateHappinessAndHealth();
-        }
 
         //animal dies
         if(healthLevel <= 0) {
@@ -79,5 +72,9 @@ public class Animal : MonoBehaviour
         if (overWorked) {
             healthLevel--;
         }
+    }
+
+    private void DayTick(TickManager obj) {
+        UpdateHappinessAndHealth();
     }
 }
