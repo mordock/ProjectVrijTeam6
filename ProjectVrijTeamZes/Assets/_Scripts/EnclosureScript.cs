@@ -74,7 +74,7 @@ public class EnclosureScript : MonoBehaviour
 
         if (earningTimer <= 0)
         {
-            cameraHolder.GetComponent<PlayerInventory>().money += earningAmount;
+            cameraHolder.GetComponent<PlayerInventory>().AddMoney(earningAmount);
             earningTimer = earningCooldown;
         }
     }
@@ -111,6 +111,7 @@ public class EnclosureScript : MonoBehaviour
                 cameraHolder.GetComponent<PlayerInventory>().ice -= currentIceCost;
                 enclosureLevel++;
                 earningTimer = earningCooldown;
+                gameManager.GetComponent<GuestManager>().AddChance(3);
             }
             else
             {
