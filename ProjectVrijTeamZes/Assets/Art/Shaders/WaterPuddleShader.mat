@@ -32,7 +32,7 @@ Material:
     - _Metallic: 0.1
     - _NormalStrength: 0.12
     - _Smoothness: 1.4
-    - _Transparency: 0.4
+    - _Transparency: 0.3
     - _VoronoiMovement: 1
     - _VoronoiPower: 4.91
     - _VoronoiScale: 10
