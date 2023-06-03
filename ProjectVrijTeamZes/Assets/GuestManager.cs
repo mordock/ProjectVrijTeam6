@@ -46,6 +46,7 @@ public class GuestManager : MonoBehaviour
         go.GetComponent<TextMesh>().text = "+$" + ticketPrice.ToString();
     }
 
+    //
     public void AddChance(int addedValue)
     {
         currentGuestChance += addedValue;

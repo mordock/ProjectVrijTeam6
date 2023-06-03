@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System;
 
 public class UiManager : MonoBehaviour
 {
     public GameObject cameraHolder;
     public GameObject enclosureUI;
     public TextMeshProUGUI moneyUI;
-    public bool enclosureUiIsOpen = false;
+    public Button upgradeButton;
+    [HideInInspector] public bool enclosureUiIsOpen = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +35,7 @@ public class UiManager : MonoBehaviour
         GetComponent<EnclosureManager>().currentOpenEnclosure = null;
     }
 
-    public void OpenEnclosureUI() {
+    public void OpenEnclosureUI(GameObject enclosure) {
         enclosureUI.SetActive(true);
 
         MoralityEnclosure enclosureScript = GetComponent<EnclosureManager>().currentOpenEnclosure.GetComponent<MoralityEnclosure>();
@@ -42,6 +44,8 @@ public class UiManager : MonoBehaviour
         enclosureUI.transform.GetChild(1).GetChild(1).GetComponent<Slider>().value = enclosureScript.currentWorkSlider;
         enclosureUI.transform.GetChild(1).GetChild(2).GetComponent<Slider>().value = enclosureScript.currentToolSlider;
         enclosureScript.isCurrentEnclosure = true;
+        
+        upgradeButton.onClick.AddListener(delegate { enclosure.GetComponent<EnclosureScript>().AttemptUpgrade(); });
     }
 
     public void CloseAdminUI()

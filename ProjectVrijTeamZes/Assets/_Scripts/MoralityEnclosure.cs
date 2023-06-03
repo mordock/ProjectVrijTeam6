@@ -96,7 +96,7 @@ public class MoralityEnclosure : MonoBehaviour
         float foodPercentage = Map(currentFoodValue, 0, 1, 0, 0.67f);
         float workPercentage = Map(currentWorkSlider, 0, 1, 0, 0.33f);
         materialPayoutAmount = (int)((workPercentage + foodPercentage) * maxMaterialPayout);
-        Debug.Log(toolMultiplier);
+        
         float multipliedAmount = toolMultiplier * materialPayoutAmount;
         materialPayoutAmount = (int)multipliedAmount;
         enclosureMaterial.GetComponent<BuildMaterial>().IncreaseAmount(materialPayoutAmount);

@@ -63,7 +63,7 @@ public class EnclosureScript : MonoBehaviour
         //UI pop-up
         if (currentlySelected && !enclosureUI.activeSelf)
         {
-            gameManager.GetComponent<UiManager>().OpenEnclosureUI();
+            gameManager.GetComponent<UiManager>().OpenEnclosureUI(gameObject);
         }
 
         //Tijdelijke knop om de upgrades te testen tot we de UI met knoppen hebben. Druk op U om te upgraden.
