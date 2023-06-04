@@ -27,7 +27,7 @@ public class EnclosureManager : MonoBehaviour
 
         //update material output
         if(currentOpenEnclosure != null){
-            materialOutPutText.text = "Material Output: " + currentOpenEnclosure.GetComponent<MoralityEnclosure>().materialPayoutAmount.ToString("F2");
+            materialOutPutText.text = "Material Output: " + currentOpenEnclosure.GetComponent<MoralityEnclosure>().materialCalculatedPayout.ToString("F2");
             expenditureText.text = "Expenditure: " + currentOpenEnclosure.GetComponent<MoralityEnclosure>().moneyPayAmount.ToString("F2");
 
             //fill top bar with data

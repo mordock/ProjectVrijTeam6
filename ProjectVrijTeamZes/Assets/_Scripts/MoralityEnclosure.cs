@@ -6,16 +6,19 @@ using UnityEngine.UI;
 public class MoralityEnclosure : MonoBehaviour
 {
     public List<Animal> animals;
+    public GameObject playerInventory;
 
     [HideInInspector] public float currentFoodValue, currentWorkSlider, currentToolSlider;
     [HideInInspector] public float toolMultiplier;
     //payout if food and work are both on 100%
-    public int maxMaterialPayout;
+    private int currentMaterialPayout;
     //maximum money cost, if food or tools are 100%
     public int maxFoodCost, maxToolCost;
-    [HideInInspector] public int moneyPayAmount, materialPayoutAmount;
+    [HideInInspector] public int moneyPayAmount, materialCalculatedPayout;
+    public int[] materialTierPayout;
     [HideInInspector] public bool isCurrentEnclosure;
     public GameObject enclosureMaterial;
+    private EnclosureScript enclosureScript;
     // Start is called before the first frame update
     void Start() {
         //set inital food slider value
@@ -42,6 +45,9 @@ public class MoralityEnclosure : MonoBehaviour
 
         //register for tick event
         TickManager.DayTick += DayTick;
+
+        enclosureScript = GetComponent<EnclosureScript>();
+        playerInventory = GameObject.FindGameObjectWithTag("Camera");
     }
 
     // Update is called once per frame
@@ -58,6 +64,14 @@ public class MoralityEnclosure : MonoBehaviour
                 PopupManager.EnableLowHealthPopup();
             } else {
                 PopupManager.DisableLowHealthPopup();
+            }
+        }
+
+        for (int i = 0; i < enclosureScript.enclosureTiers.Length; i++)
+        {
+            if (i == enclosureScript.enclosureLevel)
+            {
+                currentMaterialPayout -= materialTierPayout[i];
             }
         }
     }
@@ -90,16 +104,26 @@ public class MoralityEnclosure : MonoBehaviour
 
         //remove money based on costs
         moneyPayAmount = (int)((maxFoodCost * currentFoodValue) + (maxToolCost * currentToolSlider));
-        GetComponent<EnclosureScript>().cameraHolder.GetComponent<PlayerInventory>().RemoveMoney(moneyPayAmount);
+        if (enclosureScript.GetComponent<EnclosureScript>().enclosureLevel > 0)
+        {
+            GetComponent<EnclosureScript>().cameraHolder.GetComponent<PlayerInventory>().RemoveMoney(moneyPayAmount);
+        }
 
         //increase materials based on food and work percentage
         float foodPercentage = Map(currentFoodValue, 0, 1, 0, 0.67f);
         float workPercentage = Map(currentWorkSlider, 0, 1, 0, 0.33f);
-        materialPayoutAmount = (int)((workPercentage + foodPercentage) * maxMaterialPayout);
+        materialCalculatedPayout = (int)((workPercentage + foodPercentage) * currentMaterialPayout);
         
-        float multipliedAmount = toolMultiplier * materialPayoutAmount;
-        materialPayoutAmount = (int)multipliedAmount;
-        enclosureMaterial.GetComponent<BuildMaterial>().IncreaseAmount(materialPayoutAmount);
-        
+        float multipliedAmount = toolMultiplier * materialCalculatedPayout;
+        materialCalculatedPayout = (int)multipliedAmount;
+        if (enclosureMaterial != null)
+        {
+            enclosureMaterial.GetComponent<BuildMaterial>().IncreaseAmount(materialCalculatedPayout);
+        }
+        else
+        {
+            playerInventory.GetComponent<PlayerInventory>().AddMoney(materialCalculatedPayout);
+        }
+
     }
 }
