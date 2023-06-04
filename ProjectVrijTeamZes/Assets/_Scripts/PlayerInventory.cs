@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,16 @@ public class PlayerInventory : MonoBehaviour
 {
 
     public int money;
+    public int wood;
+    public int leaf;
+    public int stone;
+    public int ice;
+    public List<int> moneyChanges;
+
+    private void Start() {
+        //register for tick event
+        TickManager.DayTick += DayTick;
+    }
 
     private void Update()
     {
@@ -26,7 +37,18 @@ public class PlayerInventory : MonoBehaviour
         {
             money++;
         }
-
     }
 
+    public void AddMoney(int addedValue) {
+        money += addedValue;
+    }
+
+    public void RemoveMoney(int removeValue) {
+        money -= removeValue;
+    }
+
+    //base amount of income so you don't die immediately
+    private void DayTick(TickManager obj) {
+        AddMoney(10);
+    }
 }

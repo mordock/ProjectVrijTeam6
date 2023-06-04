@@ -6,37 +6,48 @@ public class EnclosureScript : MonoBehaviour
 {
     public GameObject[] enclosureTiers;
     public int[] upgradeCosts;
+    public int[] upgradeWoodCosts;
+    public int[] upgradeLeafCosts;
+    public int[] upgradeStoneCosts;
+    public int[] upgradeIceCosts;
     public int[] tierEarnings;
 
     public int enclosureLevel;
     public GameObject cameraHolder;
     public bool currentlySelected;
     public GameObject enclosureUI;
-    public string enclosureNaam;
+    public string enclosureName;
     private float earningTimer;
     public int earningAmount;
     public float earningCooldown;
 
     private int currentCost;
+    private int currentWoodCost;
+    private int currentLeafCost;
+    private int currentStoneCost;
+    private int currentIceCost;
+    private GameObject gameManager;
+
+    private void Start() {
+        gameManager = GameObject.Find("GameManager");
+    }
 
     void Update()
     {
         for (int i = 0; i < enclosureTiers.Length; i++)
         {
-            if (i == enclosureLevel)
-            {
-                enclosureTiers[i].SetActive(true);
-            }
-            else
-            {
                 enclosureTiers[i].SetActive(false);
-            }
+                enclosureTiers[enclosureLevel].SetActive(true);
         }
 
         for (int z = 0; z < upgradeCosts.Length; z++)
         {
             if (z == enclosureLevel)
             {
+                currentCost = upgradeCosts[z];
+                currentWoodCost = upgradeCosts[z];
+                currentLeafCost = upgradeCosts[z];
+                currentStoneCost = upgradeCosts[z];
                 currentCost = upgradeCosts[z];
             }
         }
@@ -52,12 +63,7 @@ public class EnclosureScript : MonoBehaviour
         //UI pop-up
         if (currentlySelected && !enclosureUI.activeSelf)
         {
-            enclosureUI.SetActive(true);
-        }
-
-        if (!currentlySelected && enclosureUI.activeSelf)
-        {
-            enclosureUI.SetActive(false);
+            gameManager.GetComponent<UiManager>().OpenEnclosureUI(gameObject);
         }
 
         //Tijdelijke knop om de upgrades te testen tot we de UI met knoppen hebben. Druk op U om te upgraden.
@@ -66,9 +72,9 @@ public class EnclosureScript : MonoBehaviour
             AttemptUpgrade();
         }
 
-        if (earningTimer == 0)
+        if (earningTimer <= 0)
         {
-            cameraHolder.GetComponent<PlayerInventory>().money += earningAmount;
+            cameraHolder.GetComponent<PlayerInventory>().AddMoney(earningAmount);
             earningTimer = earningCooldown;
         }
     }
@@ -93,9 +99,25 @@ public class EnclosureScript : MonoBehaviour
         //Upgrade if player has enough money
         if (cameraHolder.GetComponent<PlayerInventory>().money >= currentCost)
         {
-            cameraHolder.GetComponent<PlayerInventory>().money -= currentCost;
-            enclosureLevel++;
-            earningTimer = earningCooldown;
+            if (cameraHolder.GetComponent<PlayerInventory>().wood >= currentWoodCost
+                && cameraHolder.GetComponent<PlayerInventory>().leaf >= currentLeafCost
+                && cameraHolder.GetComponent<PlayerInventory>().stone >= currentStoneCost
+                && cameraHolder.GetComponent<PlayerInventory>().ice >= currentIceCost)
+            {
+                cameraHolder.GetComponent<PlayerInventory>().money -= currentCost;
+                cameraHolder.GetComponent<PlayerInventory>().wood -= currentWoodCost;
+                cameraHolder.GetComponent<PlayerInventory>().leaf -= currentLeafCost;
+                cameraHolder.GetComponent<PlayerInventory>().stone -= currentStoneCost;
+                cameraHolder.GetComponent<PlayerInventory>().ice -= currentIceCost;
+                enclosureLevel++;
+                earningTimer = earningCooldown;
+                gameManager.GetComponent<GuestManager>().AddChance(3);
+            }
+            else
+            {
+                Debug.Log("Not enough materials");
+            }
+
         }
     }
 

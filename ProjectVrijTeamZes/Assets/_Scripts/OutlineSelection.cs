@@ -44,7 +44,7 @@ public class OutlineSelection : MonoBehaviour
         //Selection
         if (Input.GetMouseButtonDown(0))
         {
-
+            GameObject gamemanager = GameObject.Find("GameManager");
             if (highlight)
             {
                 if (selection != null)
@@ -55,6 +55,10 @@ public class OutlineSelection : MonoBehaviour
                 selection = raycastHit.transform;
                 selection.gameObject.GetComponent<Outline>().enabled = true;
                 selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = true;
+ 
+                gamemanager.GetComponent<EnclosureManager>().currentOpenEnclosure = selection.gameObject;
+                gamemanager.GetComponent<UiManager>().enclosureUiIsOpen = true;
+
                 highlight = null;
             }
             else
