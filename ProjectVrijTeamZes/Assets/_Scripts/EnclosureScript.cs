@@ -45,10 +45,10 @@ public class EnclosureScript : MonoBehaviour
             if (z == enclosureLevel)
             {
                 currentCost = upgradeCosts[z];
-                currentWoodCost = upgradeCosts[z];
-                currentLeafCost = upgradeCosts[z];
-                currentStoneCost = upgradeCosts[z];
-                currentCost = upgradeCosts[z];
+                currentWoodCost = upgradeWoodCosts[z];
+                currentLeafCost = upgradeLeafCosts[z];
+                currentStoneCost = upgradeStoneCosts[z];
+                currentIceCost = upgradeIceCosts[z];
             }
         }
 
@@ -90,6 +90,13 @@ public class EnclosureScript : MonoBehaviour
 
     public void AttemptUpgrade()
     {
+        Debug.Log("wood cost: " + currentWoodCost);
+
+        Debug.Log("leaf cost: " + currentLeafCost);
+
+        Debug.Log("stone cost: " + currentStoneCost);
+
+        Debug.Log("ice cost: " + currentIceCost);
         //Upgrade if player has enough materials
         if (cameraHolder.GetComponent<PlayerInventory>().wood >= currentWoodCost
             && cameraHolder.GetComponent<PlayerInventory>().leaf >= currentLeafCost

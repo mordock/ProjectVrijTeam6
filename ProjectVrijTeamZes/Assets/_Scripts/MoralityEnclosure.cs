@@ -71,7 +71,7 @@ public class MoralityEnclosure : MonoBehaviour
         {
             if (i == enclosureScript.enclosureLevel)
             {
-                currentMaterialPayout -= materialTierPayout[i];
+                currentMaterialPayout = materialTierPayout[i];
             }
         }
     }
@@ -100,8 +100,6 @@ public class MoralityEnclosure : MonoBehaviour
     }
 
     private void DayTick(TickManager tickManager) {
-        Debug.Log("TICK " + gameObject.name);
-
         //remove money based on costs
         moneyPayAmount = (int)((maxFoodCost * currentFoodValue) + (maxToolCost * currentToolSlider));
         if (enclosureScript.GetComponent<EnclosureScript>().enclosureLevel > 0)

@@ -45,4 +45,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialName: Stone
-  materialAmount: 0
+  materialAmount: 10000
