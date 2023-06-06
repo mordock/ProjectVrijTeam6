@@ -10,7 +10,6 @@ public class UiManager : MonoBehaviour
     public GameObject cameraHolder;
     public GameObject enclosureUI;
     public TextMeshProUGUI moneyUI;
-    public Button upgradeButton;
     [HideInInspector] public bool enclosureUiIsOpen = false;
     // Start is called before the first frame update
     void Start()
@@ -44,8 +43,6 @@ public class UiManager : MonoBehaviour
         enclosureUI.transform.GetChild(1).GetChild(1).GetComponent<Slider>().value = enclosureScript.currentWorkSlider;
         enclosureUI.transform.GetChild(1).GetChild(2).GetComponent<Slider>().value = enclosureScript.currentToolSlider;
         enclosureScript.isCurrentEnclosure = true;
-        
-        upgradeButton.onClick.AddListener(delegate { enclosure.GetComponent<EnclosureScript>().AttemptUpgrade(); });
     }
 
     public void CloseAdminUI()
