@@ -19,6 +19,11 @@ public class UpgradePopup : MonoBehaviour
     public GameObject starHolder;
     public Button upgradeButton;
 
+    public TextMeshProUGUI output;
+    public Image outputIcon;
+
+    public TextMeshProUGUI upgradeButtonText;
+
     private GameObject currentEnclosure;
     // Start is called before the first frame update
     void Start() {
@@ -72,6 +77,19 @@ public class UpgradePopup : MonoBehaviour
                     child.gameObject.SetActive(false);
                 }
             }
+        }
+        EnclosureScript enclosure = currentEnclosure.GetComponent<EnclosureScript>();
+        //change output
+        if (level < 5) {
+            output.text = "+ " + (enclosure.tierEarnings[level + 1] - enclosure.tierEarnings[level]).ToString();
+        } else {
+            output.text = enclosure.tierEarnings[level].ToString();
+        } 
+
+        outputIcon.sprite = currentEnclosure.GetComponent<MoralityEnclosure>().enclosureMaterial.GetComponent<BuildMaterial>().icon;
+
+        if(level < 5){
+            upgradeButtonText.text = "upgrade to level " + (enclosure.enclosureLevel + 1);
         }
     }
 
