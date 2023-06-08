@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Selectable
   - Camera
+  - SelectableMain
   layers:
   - Default
   - TransparentFX
