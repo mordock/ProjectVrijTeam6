@@ -27,13 +27,13 @@ public class EnclosureManager : MonoBehaviour
 
         //update material output
         if(currentOpenEnclosure != null){
-            materialOutPutText.text = "Material Output: " + currentOpenEnclosure.GetComponent<MoralityEnclosure>().materialPayoutAmount.ToString("F2");
-            expenditureText.text = "Expenditure: " + currentOpenEnclosure.GetComponent<MoralityEnclosure>().moneyPayAmount.ToString("F2");
+            materialOutPutText.text = "Material Output: " + currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().materialCalculatedPayout.ToString("F2");
+            expenditureText.text = "Expenditure: " + currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().moneyPayAmount.ToString("F2");
 
             //fill top bar with data
-            enclosureName.text = currentOpenEnclosure.GetComponent<EnclosureScript>().enclosureName;
+            enclosureName.text = currentOpenEnclosure.transform.parent.gameObject.GetComponent<EnclosureScript>().enclosureName;
             string names = "";
-            foreach(Animal animal in currentOpenEnclosure.GetComponent<MoralityEnclosure>().animals) {
+            foreach(Animal animal in currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().animals) {
                 names += animal.animalName + ", ";
             }
             //remove last comma
@@ -42,7 +42,7 @@ public class EnclosureManager : MonoBehaviour
     }
 
     public void UpdateFoodSlider(float value) {
-        currentOpenEnclosure.GetComponent<MoralityEnclosure>().currentFoodValue = value;
+        currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().currentFoodValue = value;
         if (value < 0.4f) {
             float happiness = Map(value, 0, 0.4f, 0, 10);
             AddToHappinessChanges(happiness, 0);
@@ -76,7 +76,7 @@ public class EnclosureManager : MonoBehaviour
     }
 
     public void UpdateWorkSlider(float value) {
-        currentOpenEnclosure.GetComponent<MoralityEnclosure>().currentWorkSlider = value;
+        currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().currentWorkSlider = value;
         if (value > 0.8f) {
             float happiness = Map(value, 0.8f, 1f, -40, -80);
             AddToHappinessChanges(happiness, 1);
@@ -97,9 +97,9 @@ public class EnclosureManager : MonoBehaviour
     }
 
     public void UpdateToolSlider(float value) {
-        currentOpenEnclosure.GetComponent<MoralityEnclosure>().currentToolSlider = value;
+        currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().currentToolSlider = value;
         float multiplier = Map(value, 0, 1f, 1, 1.5f);
-        currentOpenEnclosure.GetComponent<MoralityEnclosure>().toolMultiplier = multiplier;
+        currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().toolMultiplier = multiplier;
         multiplierText.text = multiplier.ToString("F2") + "X";
     }
 
@@ -109,14 +109,16 @@ public class EnclosureManager : MonoBehaviour
 
     //add the actual values to animal happiness change
     private void AddToHappinessChanges(float happiness, int locataion) {
-        currentOpenEnclosure.GetComponent<MoralityEnclosure>().animals.ForEach(animal => {
+        currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().animals.ForEach(animal => {
             animal.happinessChanges[locataion] = (int)happiness;
         });
     }
 
     public void UpdateHappinessPercentageUi() {
-        if(currentOpenEnclosure != null){
-            MoralityEnclosure enclosure = currentOpenEnclosure.GetComponent<MoralityEnclosure>();
+
+        if (currentOpenEnclosure != null){
+            MoralityEnclosure enclosure = currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>();
+
             happinessText.text = enclosure.GetAverageAnimalHappiness().ToString() + "%";
             happinessBar.fillAmount = enclosure.GetAverageAnimalHappiness() / 100;
         }
@@ -124,7 +126,7 @@ public class EnclosureManager : MonoBehaviour
 
     public void UpdateHealthPercentageUi() {
         if (currentOpenEnclosure != null) {
-            MoralityEnclosure enclosure = currentOpenEnclosure.GetComponent<MoralityEnclosure>();
+            MoralityEnclosure enclosure = currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>();
             healthText.text = enclosure.GetAverageAnimalHealth().ToString() + "%";
             healthBar.fillAmount = enclosure.GetAverageAnimalHealth() / 100;
         }
@@ -138,27 +140,27 @@ public class EnclosureManager : MonoBehaviour
     }
 
     public void SetOverFed() {
-        currentOpenEnclosure.GetComponent<MoralityEnclosure>().animals.ForEach(animal => {
+        currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().animals.ForEach(animal => {
             animal.overFed = true;
             animal.underFed = false;
         });
     }
 
     public void SetOverWorked() {
-        currentOpenEnclosure.GetComponent<MoralityEnclosure>().animals.ForEach(animal => {
+        currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().animals.ForEach(animal => {
             animal.overWorked = true;
         });
     }
 
     public void SetRegularFood() {
-        currentOpenEnclosure.GetComponent<MoralityEnclosure>().animals.ForEach(animal => {
+        currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().animals.ForEach(animal => {
             animal.overFed = false;
             animal.underFed = false;
         });
     }
 
     public void SetRegularWork() {
-        currentOpenEnclosure.GetComponent<MoralityEnclosure>().animals.ForEach(animal => {
+        currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().animals.ForEach(animal => {
             animal.overWorked = false;
         });
     }

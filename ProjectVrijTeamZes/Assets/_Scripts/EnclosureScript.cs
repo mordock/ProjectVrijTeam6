@@ -45,10 +45,10 @@ public class EnclosureScript : MonoBehaviour
             if (z == enclosureLevel)
             {
                 currentCost = upgradeCosts[z];
-                currentWoodCost = upgradeCosts[z];
-                currentLeafCost = upgradeCosts[z];
-                currentStoneCost = upgradeCosts[z];
-                currentCost = upgradeCosts[z];
+                currentWoodCost = upgradeWoodCosts[z];
+                currentLeafCost = upgradeLeafCosts[z];
+                currentStoneCost = upgradeStoneCosts[z];
+                currentIceCost = upgradeIceCosts[z];
             }
         }
 
@@ -90,35 +90,27 @@ public class EnclosureScript : MonoBehaviour
 
     public void AttemptUpgrade()
     {
-        //Log if player doesn't have enough money
-        if (cameraHolder.GetComponent<PlayerInventory>().money < currentCost)
+        //Upgrade if player has enough materials
+        if (cameraHolder.GetComponent<PlayerInventory>().wood >= currentWoodCost
+            && cameraHolder.GetComponent<PlayerInventory>().leaf >= currentLeafCost
+            && cameraHolder.GetComponent<PlayerInventory>().stone >= currentStoneCost
+            && cameraHolder.GetComponent<PlayerInventory>().ice >= currentIceCost)
         {
-            Debug.Log("Too expensive");
+            cameraHolder.GetComponent<PlayerInventory>().money -= currentCost;
+            cameraHolder.GetComponent<PlayerInventory>().wood -= currentWoodCost;
+            cameraHolder.GetComponent<PlayerInventory>().leaf -= currentLeafCost;
+            cameraHolder.GetComponent<PlayerInventory>().stone -= currentStoneCost;
+            cameraHolder.GetComponent<PlayerInventory>().ice -= currentIceCost;
+            enclosureLevel++;
+            earningTimer = earningCooldown;
+            gameManager.GetComponent<GuestManager>().AddChance(3);
+            gameManager.GetComponent<UpgradePopup>().Upgrade();
+        }
+        else
+        {
+            Debug.Log("Not enough materials");
         }
 
-        //Upgrade if player has enough money
-        if (cameraHolder.GetComponent<PlayerInventory>().money >= currentCost)
-        {
-            if (cameraHolder.GetComponent<PlayerInventory>().wood >= currentWoodCost
-                && cameraHolder.GetComponent<PlayerInventory>().leaf >= currentLeafCost
-                && cameraHolder.GetComponent<PlayerInventory>().stone >= currentStoneCost
-                && cameraHolder.GetComponent<PlayerInventory>().ice >= currentIceCost)
-            {
-                cameraHolder.GetComponent<PlayerInventory>().money -= currentCost;
-                cameraHolder.GetComponent<PlayerInventory>().wood -= currentWoodCost;
-                cameraHolder.GetComponent<PlayerInventory>().leaf -= currentLeafCost;
-                cameraHolder.GetComponent<PlayerInventory>().stone -= currentStoneCost;
-                cameraHolder.GetComponent<PlayerInventory>().ice -= currentIceCost;
-                enclosureLevel++;
-                earningTimer = earningCooldown;
-                gameManager.GetComponent<GuestManager>().AddChance(3);
-            }
-            else
-            {
-                Debug.Log("Not enough materials");
-            }
-
-        }
     }
 
 }

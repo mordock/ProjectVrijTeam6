@@ -21,7 +21,7 @@ public class OutlineSelection : MonoBehaviour
         if (!EventSystem.current.IsPointerOverGameObject() && Physics.Raycast(ray, out raycastHit))
         {
             highlight = raycastHit.transform;
-            if (highlight.CompareTag("Selectable") && highlight != selection)
+            if ((highlight.CompareTag("Selectable") || highlight.CompareTag("SelectableMain")) && highlight != selection)
             {
                 if (highlight.gameObject.GetComponent<Outline>() != null)
                 {
@@ -52,14 +52,20 @@ public class OutlineSelection : MonoBehaviour
                     selection.gameObject.GetComponent<Outline>().enabled = false;
                     selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = false;
                 }
-                selection = raycastHit.transform;
-                selection.gameObject.GetComponent<Outline>().enabled = true;
-                selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = true;
+                //main building
+                if (highlight.CompareTag("SelectableMain")) {
+                    Debug.Log("admin");
+                }else{
+                    //enclosures
+                    selection = raycastHit.transform;
+                    selection.gameObject.GetComponent<Outline>().enabled = true;
+                    selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = true;
  
-                gamemanager.GetComponent<EnclosureManager>().currentOpenEnclosure = selection.gameObject;
-                gamemanager.GetComponent<UiManager>().enclosureUiIsOpen = true;
+                    gamemanager.GetComponent<EnclosureManager>().currentOpenEnclosure = selection.gameObject;
+                    gamemanager.GetComponent<UiManager>().enclosureUiIsOpen = true;
 
-                highlight = null;
+                    highlight = null;
+                }
             }
             else
             {

@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialName: Wood
-  materialAmount: 0
+  materialAmount: 10000
+  icon: {fileID: 21300000, guid: b1edb984004389545a63e5aa3a673330, type: 3}
