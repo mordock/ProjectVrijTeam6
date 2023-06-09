@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8d0bb1c476e590945b164dc11369d4b5
+guid: 1ccd59852b526ce46a62f32dc74c8ab6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,58 +7,23 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: BrownWood.001
+      name: BrownWood.002
     second: {fileID: 2100000, guid: 5a5677ff94143c14b819b85b52fa0af8, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Bush
-    second: {fileID: 2100000, guid: fcd67a37a9f9f1149b17a9410c88f593, type: 2}
+      name: Light Light Rock.001
+    second: {fileID: 2100000, guid: 20b9997c317a8374baa602424d9e2466, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Glass.002
-    second: {fileID: 2100000, guid: 85562f7b5e22c424eb514977e086f03f, type: 2}
+      name: Light Rock
+    second: {fileID: 2100000, guid: 8c0f8c5d5f1baa84da7f74ca77643886, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Grass.001
-    second: {fileID: 2100000, guid: 29e21db625915824c80e850ed506cb56, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Main building.001
-    second: {fileID: 2100000, guid: 737551a2978f6924b9de72c942f16774, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal.001
-    second: {fileID: 2100000, guid: 863f92380c3073249a508a278e24f752, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Metal.002
-    second: {fileID: 2100000, guid: 863f92380c3073249a508a278e24f752, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Orange
-    second: {fileID: 2100000, guid: a0052110588bc184497238bf78193a86, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Pink
-    second: {fileID: 2100000, guid: 294cb520845bbb243b82f31818599567, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Wood.001
-    second: {fileID: 2100000, guid: 410de7194139c0743a5ad21350a3e832, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: white.001
-    second: {fileID: 2100000, guid: 54001d6cd15bc9b45a36332d4d8173d1, type: 2}
+      name: Path
+    second: {fileID: 2100000, guid: fc401e2a64d27a54b9e63b8f294b6859, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -87,7 +52,7 @@ ModelImporter:
     extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
-    isReadable: 1
+    isReadable: 0
   meshes:
     lODScreenPercentages: []
     globalScale: 1

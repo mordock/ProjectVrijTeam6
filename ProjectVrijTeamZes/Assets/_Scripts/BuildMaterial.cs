@@ -6,6 +6,7 @@ public class BuildMaterial : MonoBehaviour
 {
     public string materialName;
     public int materialAmount;
+    public Sprite icon;
     // Start is called before the first frame update
     void Start()
     {

@@ -46,3 +46,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   materialName: Stone
   materialAmount: 10000
+  icon: {fileID: 21300000, guid: 48175d0648bcbc34fbb18c7d77e8b8dc, type: 3}

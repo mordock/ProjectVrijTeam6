@@ -90,13 +90,6 @@ public class EnclosureScript : MonoBehaviour
 
     public void AttemptUpgrade()
     {
-        Debug.Log("wood cost: " + currentWoodCost);
-
-        Debug.Log("leaf cost: " + currentLeafCost);
-
-        Debug.Log("stone cost: " + currentStoneCost);
-
-        Debug.Log("ice cost: " + currentIceCost);
         //Upgrade if player has enough materials
         if (cameraHolder.GetComponent<PlayerInventory>().wood >= currentWoodCost
             && cameraHolder.GetComponent<PlayerInventory>().leaf >= currentLeafCost
@@ -111,6 +104,7 @@ public class EnclosureScript : MonoBehaviour
             enclosureLevel++;
             earningTimer = earningCooldown;
             gameManager.GetComponent<GuestManager>().AddChance(3);
+            gameManager.GetComponent<UpgradePopup>().Upgrade();
         }
         else
         {

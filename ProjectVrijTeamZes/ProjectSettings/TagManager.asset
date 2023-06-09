@@ -6,11 +6,7 @@ TagManager:
   tags:
   - Selectable
   - Camera
-  - EnclosureCollision
-  - PosXWall
-  - NegXWall
-  - PosZWall
-  - NegZWall
+  - SelectableMain
   layers:
   - Default
   - TransparentFX
@@ -18,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Volume
   - 
   - 
   - 
