@@ -55,7 +55,8 @@ public class OutlineSelection : MonoBehaviour
                 //main building
                 if (highlight.CompareTag("SelectableMain")) {
                     Debug.Log("admin");
-                }else{
+                    gamemanager.GetComponent<AdminManager>().OpenAdminUI();
+                } else{
                     //enclosures
                     selection = raycastHit.transform;
                     selection.gameObject.GetComponent<Outline>().enabled = true;
