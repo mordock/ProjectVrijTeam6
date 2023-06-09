@@ -13,6 +13,7 @@ public class ZoomControl : MonoBehaviour
     void Start()
     {
         cam = GetComponent<Camera>();
+        cam.orthographicSize = MaxSize;
     }
 
     void Update()
