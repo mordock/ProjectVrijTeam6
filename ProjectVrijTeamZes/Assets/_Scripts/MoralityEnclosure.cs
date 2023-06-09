@@ -22,23 +22,23 @@ public class MoralityEnclosure : MonoBehaviour
     // Start is called before the first frame update
     void Start() {
         //set inital food slider value
-        currentFoodValue = 0.7f;
-        float foodHappiness = Map(currentFoodValue, 0.4f, 0.9f, 10, 100);
-        animals.ForEach(animal => {
-            animal.happinessChanges[0] = (int)foodHappiness;
-        });
+        //currentFoodValue = 0.7f;
+        //float foodHappiness = Map(currentFoodValue, 0.4f, 0.9f, 10, 100);
+        //animals.ForEach(animal => {
+        //    animal.happinessChanges[0] = (int)foodHappiness;
+        //});
 
-        //set intial work slider value
-        currentWorkSlider = 0.25f;
-        float workHappiness = Map(currentWorkSlider, 0, 0.8f, 0, -40);
-        animals.ForEach(animal => {
-            animal.happinessChanges[1] = (int)workHappiness;
-        });
+        ////set intial work slider value
+        //currentWorkSlider = 0.25f;
+        //float workHappiness = Map(currentWorkSlider, 0, 0.8f, 0, -40);
+        //animals.ForEach(animal => {
+        //    animal.happinessChanges[1] = (int)workHappiness;
+        //});
 
-        //set inital animal happiness
-        animals.ForEach(animal => {
-            animal.UpdateHappinessAndHealth();
-        });
+        ////set inital animal happiness
+        //animals.ForEach(animal => {
+        //    animal.UpdateHappinessAndHealth();
+        //});
 
         currentToolSlider = 0f;
         toolMultiplier = 1;
@@ -67,13 +67,13 @@ public class MoralityEnclosure : MonoBehaviour
             }
         }
 
-        for (int i = 0; i < enclosureScript.enclosureTiers.Length; i++)
-        {
-            if (i == enclosureScript.enclosureLevel)
-            {
-                currentMaterialPayout = materialTierPayout[i];
-            }
-        }
+        //for (int i = 0; i < enclosureScript.enclosureTiers.Length; i++)
+        //{
+        //    if (i == enclosureScript.enclosureLevel)
+        //    {
+        //        currentMaterialPayout = materialTierPayout[i];
+        //    }
+        //}
     }
 
     //method used to display the happiness on the enclosure UI
