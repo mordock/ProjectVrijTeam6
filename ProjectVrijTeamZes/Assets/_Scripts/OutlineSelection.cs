@@ -45,35 +45,38 @@ public class OutlineSelection : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GameObject gamemanager = GameObject.Find("GameManager");
-            if (highlight)
-            {
-                if (selection != null)
+            if(!gamemanager.GetComponent<Tutorial>().isPlayingTutorial){
+                if (highlight)
                 {
-                    selection.gameObject.GetComponent<Outline>().enabled = false;
-                    selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = false;
-                }
-                //main building
-                if (highlight.CompareTag("SelectableMain")) {
-                    Debug.Log("admin");
-                }else{
-                    //enclosures
-                    selection = raycastHit.transform;
-                    selection.gameObject.GetComponent<Outline>().enabled = true;
-                    selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = true;
+                    if (selection != null)
+                    {
+                        selection.gameObject.GetComponent<Outline>().enabled = false;
+                        selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = false;
+                    }
+                    //main building
+                    if (highlight.CompareTag("SelectableMain")) {
+                        Debug.Log("admin");
+                        gamemanager.GetComponent<AdminManager>().OpenAdminUI();
+                    } else{
+                        //enclosures
+                        selection = raycastHit.transform;
+                        selection.gameObject.GetComponent<Outline>().enabled = true;
+                        selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = true;
  
-                    gamemanager.GetComponent<EnclosureManager>().currentOpenEnclosure = selection.gameObject;
-                    gamemanager.GetComponent<UiManager>().enclosureUiIsOpen = true;
+                        gamemanager.GetComponent<EnclosureManager>().currentOpenEnclosure = selection.gameObject;
+                        gamemanager.GetComponent<UiManager>().enclosureUiIsOpen = true;
 
-                    highlight = null;
+                        highlight = null;
+                    }
                 }
-            }
-            else
-            {
-                if (selection)
+                else
                 {
-                    selection.gameObject.GetComponent<Outline>().enabled = false;
-                    selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = false;
-                    selection = null;
+                    if (selection)
+                    {
+                        selection.gameObject.GetComponent<Outline>().enabled = false;
+                        selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = false;
+                        selection = null;
+                    }
                 }
             }
         }

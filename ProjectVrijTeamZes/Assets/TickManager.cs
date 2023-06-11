@@ -8,7 +8,7 @@ public class TickManager : MonoBehaviour
 {
     public static event Action<TickManager> DayTick = delegate { };
 
-    public List<GameObject> tickCircles;
+    public GameObject clockPointerPivot;
 
     public float tickTimeInSec;
 
@@ -28,8 +28,13 @@ public class TickManager : MonoBehaviour
             DayTick(this);
         }
 
-        foreach(GameObject circle in tickCircles) {
-            circle.GetComponent<Image>().fillAmount = currentTime / tickTimeInSec;
-        }
+        float percentage = currentTime / tickTimeInSec;
+        float rotation = Map(percentage, 0, 1, 270, 90);
+
+        clockPointerPivot.transform.eulerAngles = new Vector3(180, 0, rotation);
+    }
+
+    float Map(float s, float a1, float a2, float b1, float b2) {
+        return b1 + (s - a1) * (b2 - b1) / (a2 - a1);
     }
 }
