@@ -16,7 +16,6 @@ public class PlayerInventory : MonoBehaviour
     private void Start() {
         //register for tick event
         TickManager.DayTick += DayTick;
-        AddMoney(500);
     }
 
     private void Update()
