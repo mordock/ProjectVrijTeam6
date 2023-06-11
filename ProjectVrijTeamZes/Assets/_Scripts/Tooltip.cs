@@ -15,6 +15,7 @@ public class Tooltip : MonoBehaviour
 
     public RectTransform rectTransform;
 
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -61,12 +62,12 @@ public class Tooltip : MonoBehaviour
 
         if (pivotX < 0.5) //If mouse on left of screen move tooltip to right of cursor and vice vera
         {
-            finalPivotX = -0.2f;
+            finalPivotX = -0.05f;
         }
 
         else
         {
-            finalPivotX = 1.01f;
+            finalPivotX = 1.02f;
         }
 
         if (pivotY < 0.5) //If mouse on lower half of screen move tooltip above cursor and vice versa
