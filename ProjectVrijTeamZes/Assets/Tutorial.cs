@@ -30,7 +30,6 @@ public class Tutorial : MonoBehaviour
             }
         }
         if (isPlayingTutorial) {
-            Debug.Log(currentTutorialPlace);
             tutorialText.text = firstTutorialTexts[currentTutorialPlace];
 
             for (int i = 0; i < firstTutorialArrows.Count; i++) {

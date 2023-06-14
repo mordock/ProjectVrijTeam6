@@ -30617,7 +30617,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &1131817417300606295
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -30992,7 +30992,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &3364691878762466086
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31197,7 +31197,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &3868931965955140339
 GameObject:
   m_ObjectHideFlags: 0
@@ -31216,7 +31216,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!23 &3953492900449264799
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -31491,7 +31491,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &4832542334935546085
 GameObject:
   m_ObjectHideFlags: 0
@@ -31541,7 +31541,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &5110983361833070494
 GameObject:
   m_ObjectHideFlags: 0
@@ -32094,7 +32094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6719502402655401902
 Transform:
   m_ObjectHideFlags: 0
@@ -32218,7 +32218,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!23 &7589152716308497922
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32278,7 +32278,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &7848200501367764551
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -32573,7 +32573,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!33 &9220179740393074170
 MeshFilter:
   m_ObjectHideFlags: 0

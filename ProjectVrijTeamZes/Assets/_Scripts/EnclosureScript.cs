@@ -66,12 +66,6 @@ public class EnclosureScript : MonoBehaviour
             gameManager.GetComponent<UiManager>().OpenEnclosureUI(gameObject);
         }
 
-        //Tijdelijke knop om de upgrades te testen tot we de UI met knoppen hebben. Druk op U om te upgraden.
-        if (Input.GetKeyDown(KeyCode.U) && enclosureLevel < enclosureTiers.Length - 1)
-        {
-            AttemptUpgrade();
-        }
-
         if (earningTimer <= 0)
         {
             cameraHolder.GetComponent<PlayerInventory>().AddMoney(earningAmount);
@@ -90,6 +84,8 @@ public class EnclosureScript : MonoBehaviour
 
     public void AttemptUpgrade()
     {
+        Debug.Log("ATTEMPT");
+
         //Upgrade if player has enough materials
         if (cameraHolder.GetComponent<PlayerInventory>().wood >= currentWoodCost
             && cameraHolder.GetComponent<PlayerInventory>().leaf >= currentLeafCost
