@@ -7,10 +7,6 @@ public class PlayerInventory : MonoBehaviour
 {
 
     public int money;
-    public int wood;
-    public int leaf;
-    public int stone;
-    public int ice;
     public List<int> moneyChanges;
 
     private void Start() {

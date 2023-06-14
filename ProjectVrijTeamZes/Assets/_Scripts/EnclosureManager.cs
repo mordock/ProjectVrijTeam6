@@ -115,7 +115,6 @@ public class EnclosureManager : MonoBehaviour
     }
 
     public void UpdateHappinessPercentageUi() {
-
         if (currentOpenEnclosure != null){
             MoralityEnclosure enclosure = currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>();
 
@@ -133,7 +132,7 @@ public class EnclosureManager : MonoBehaviour
     }
 
     public void SetUnderFed() {
-        currentOpenEnclosure.GetComponent<MoralityEnclosure>().animals.ForEach(animal => {
+        currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().animals.ForEach(animal => {
             animal.underFed = true;
             animal.overFed = false;
         });

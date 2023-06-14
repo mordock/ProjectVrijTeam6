@@ -32,78 +32,64 @@ public class EnclosureScript : MonoBehaviour
         gameManager = GameObject.Find("GameManager");
     }
 
-    void Update()
-    {
-        for (int i = 0; i < enclosureTiers.Length; i++)
-        {
-                enclosureTiers[i].SetActive(false);
-                enclosureTiers[enclosureLevel].SetActive(true);
+    void Update() {
+        for (int i = 0; i < enclosureTiers.Length; i++) {
+            enclosureTiers[i].SetActive(false);
+            enclosureTiers[enclosureLevel].SetActive(true);
         }
 
-        for (int z = 0; z < upgradeCosts.Length; z++)
-        {
-            if (z == enclosureLevel)
-            {
-                currentCost = upgradeCosts[z];
-                currentWoodCost = upgradeWoodCosts[z];
-                currentLeafCost = upgradeLeafCosts[z];
-                currentStoneCost = upgradeStoneCosts[z];
-                currentIceCost = upgradeIceCosts[z];
+        for (int z = 0; z < upgradeCosts.Length; z++) {
+            if (z == enclosureLevel) {
+                if (z < upgradeCosts.Length) {
+                    currentCost = upgradeCosts[z];
+                    currentWoodCost = upgradeWoodCosts[z];
+                    currentLeafCost = upgradeLeafCosts[z];
+                    currentStoneCost = upgradeStoneCosts[z];
+                    currentIceCost = upgradeIceCosts[z];
+                }
             }
         }
 
-        for (int x = 0; x < tierEarnings.Length; x++)
-        {
-            if (x == enclosureLevel)
-            {
+        for (int x = 0; x < tierEarnings.Length; x++) {
+            if (x == enclosureLevel) {
                 earningAmount = tierEarnings[x];
             }
         }
 
         //UI pop-up
-        if (currentlySelected && !enclosureUI.activeSelf)
-        {
+        if (currentlySelected && !enclosureUI.activeSelf) {
             gameManager.GetComponent<UiManager>().OpenEnclosureUI(gameObject);
         }
 
-        if (earningTimer <= 0)
-        {
+        if (earningTimer <= 0) {
             cameraHolder.GetComponent<PlayerInventory>().AddMoney(earningAmount);
             earningTimer = earningCooldown;
         }
     }
 
-    private void FixedUpdate()
-    {
+    private void FixedUpdate() {
         //Money earning timer
-        if (earningTimer > 0)
-        {
+        if (earningTimer > 0) {
             earningTimer -= Time.fixedDeltaTime;
         }
     }
 
-    public void AttemptUpgrade()
-    {
-        Debug.Log("ATTEMPT");
-
+    public void AttemptUpgrade() {
         //Upgrade if player has enough materials
-        if (cameraHolder.GetComponent<PlayerInventory>().wood >= currentWoodCost
-            && cameraHolder.GetComponent<PlayerInventory>().leaf >= currentLeafCost
-            && cameraHolder.GetComponent<PlayerInventory>().stone >= currentStoneCost
-            && cameraHolder.GetComponent<PlayerInventory>().ice >= currentIceCost)
-        {
+        if (gameManager.GetComponent<MaterialManager>().wood.GetComponent<BuildMaterial>().materialAmount >= currentWoodCost
+            && gameManager.GetComponent<MaterialManager>().leaf.GetComponent<BuildMaterial>().materialAmount >= currentLeafCost
+            && gameManager.GetComponent<MaterialManager>().stone.GetComponent<BuildMaterial>().materialAmount >= currentStoneCost
+            && gameManager.GetComponent<MaterialManager>().ice.GetComponent<BuildMaterial>().materialAmount >= currentIceCost) {
             cameraHolder.GetComponent<PlayerInventory>().money -= currentCost;
-            cameraHolder.GetComponent<PlayerInventory>().wood -= currentWoodCost;
-            cameraHolder.GetComponent<PlayerInventory>().leaf -= currentLeafCost;
-            cameraHolder.GetComponent<PlayerInventory>().stone -= currentStoneCost;
-            cameraHolder.GetComponent<PlayerInventory>().ice -= currentIceCost;
+            gameManager.GetComponent<MaterialManager>().wood.GetComponent<BuildMaterial>().materialAmount -= currentWoodCost;
+            gameManager.GetComponent<MaterialManager>().leaf.GetComponent<BuildMaterial>().materialAmount -= currentLeafCost;
+            gameManager.GetComponent<MaterialManager>().stone.GetComponent<BuildMaterial>().materialAmount -= currentStoneCost;
+            gameManager.GetComponent<MaterialManager>().ice.GetComponent<BuildMaterial>().materialAmount -= currentIceCost;
             enclosureLevel++;
             earningTimer = earningCooldown;
             gameManager.GetComponent<GuestManager>().AddChance(3);
             gameManager.GetComponent<UpgradePopup>().Upgrade();
-        }
-        else
-        {
+        } else {
             Debug.Log("Not enough materials");
         }
 

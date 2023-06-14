@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc30bc7e49ffeda41a9e18287136b1dc, type: 3}
+  m_Name: Voorbeeld Event
+  m_EditorClassIdentifier: 
+  eventName: Dit zie je bovenaan de event
+  eventText: Dit is een lang stuk text waar je de rest van het event kan lezen
+  option1:
+    optionText: Optie 1 text
+    negativeGain: 0
+    positiveGain: 1
+    amount: 5
+  option2:
+    optionText: Optie 2 text
+    negativeGain: 2
+    positiveGain: 0
+    amount: 7

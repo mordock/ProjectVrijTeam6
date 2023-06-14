@@ -51,10 +51,10 @@ public class UpgradePopup : MonoBehaviour
     }
 
     public void OpenLevel(int level) {
-        if (currentEnclosure.GetComponent<EnclosureScript>().enclosureLevel == 5)
-        {
+        if (currentEnclosure.GetComponent<EnclosureScript>().enclosureLevel == 5) {
             level -= 1;
         }
+
         //change name
         enclosureName.text = currentEnclosure.GetComponent<EnclosureScript>().enclosureName;
         //Change Cost values
@@ -64,9 +64,7 @@ public class UpgradePopup : MonoBehaviour
             woodCost.text = currentEnclosure.GetComponent<EnclosureScript>().upgradeWoodCosts[level - 1].ToString();
             iceCost.text = currentEnclosure.GetComponent<EnclosureScript>().upgradeIceCosts[level - 1].ToString();
             leafCost.text = currentEnclosure.GetComponent<EnclosureScript>().upgradeLeafCosts[level - 1].ToString();
-        } 
-        else
-        {
+        } else {
             moneyCost.text = "N/A";
             stoneCost.text = "N/A";
             woodCost.text = "N/A";
@@ -75,9 +73,9 @@ public class UpgradePopup : MonoBehaviour
         }
 
         //turn on/off starts
-        for(int i = 0; i < starHolder.transform.childCount; i++) {
-            if(i <= currentEnclosure.GetComponent<EnclosureScript>().enclosureLevel) {
-                foreach(Transform child in starHolder.transform.GetChild(i).transform) {
+        for (int i = 0; i < starHolder.transform.childCount; i++) {
+            if (i <= currentEnclosure.GetComponent<EnclosureScript>().enclosureLevel) {
+                foreach (Transform child in starHolder.transform.GetChild(i).transform) {
                     child.gameObject.SetActive(true);
                 }
             } else {
@@ -89,21 +87,19 @@ public class UpgradePopup : MonoBehaviour
         EnclosureScript enclosure = currentEnclosure.GetComponent<EnclosureScript>();
         //change output
         if (level <= 5 && level > 0) {
-            output.text = "+ " + (enclosure.tierEarnings[level] - enclosure.tierEarnings[level -1]).ToString();
-        }
-        else {
+            output.text = "+ " + (enclosure.tierEarnings[level] - enclosure.tierEarnings[level - 1]).ToString();
+        } else {
             output.text = "N/A";
         }
 
         outputIcon.sprite = currentEnclosure.GetComponent<MoralityEnclosure>().enclosureMaterial.GetComponent<BuildMaterial>().icon;
 
-        if(enclosure.enclosureLevel < 5){
+        if (enclosure.enclosureLevel < 5) {
             upgradeButtonText.text = "upgrade to level " + (enclosure.enclosureLevel + 1);
         }
-        if(enclosure.enclosureLevel == 5){
+        if (enclosure.enclosureLevel == 5) {
             upgradeButtonText.text = "MAXED";
         }
-        Debug.Log("level:" + level + "and enclosurelevel:" + enclosure.enclosureLevel);
     }
 
     public void Upgrade() {

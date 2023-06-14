@@ -2000,9 +2000,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animals:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1096874200}
+  - {fileID: 522725298}
+  - {fileID: 1250838108}
   playerInventory: {fileID: 4140658300767505974}
   currentFoodValue: 0
   currentWorkSlider: 0
@@ -20327,8 +20327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animals:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 2120645350}
+  - {fileID: 841980641}
   - {fileID: 0}
   playerInventory: {fileID: 0}
   currentFoodValue: 0
