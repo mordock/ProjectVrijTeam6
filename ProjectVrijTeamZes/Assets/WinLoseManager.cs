@@ -14,8 +14,7 @@ public class WinLoseManager : MonoBehaviour
     void Start()
     {
         TickManager.DayTick += DayTick;
-        maxDayText.text = playDays.ToString();
-        currentDayText.text = "Day: " + currentDay.ToString();
+        UpdateDayUI();
     }
 
     // Update is called once per frame
@@ -38,6 +37,11 @@ public class WinLoseManager : MonoBehaviour
 
     private void DayTick(TickManager obj) {
         currentDay++;
+        currentDayText.text = "Day: " + currentDay.ToString();
+    }
+
+    public void UpdateDayUI() {
+        maxDayText.text = playDays.ToString();
         currentDayText.text = "Day: " + currentDay.ToString();
     }
 }

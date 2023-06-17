@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39e7c84b6ac766b4dafa6406fb3204b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  materialName: Metal
+  materialName: Money
   materialAmount: 0
+  icon: {fileID: 0}
