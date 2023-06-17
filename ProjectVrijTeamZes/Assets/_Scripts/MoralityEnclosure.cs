@@ -19,6 +19,7 @@ public class MoralityEnclosure : MonoBehaviour
     [HideInInspector] public bool isCurrentEnclosure;
     public GameObject enclosureMaterial;
     private EnclosureScript enclosureScript;
+    public bool payoutInMoney;
     // Start is called before the first frame update
     void Start() {
         //set inital food slider value
@@ -112,13 +113,13 @@ public class MoralityEnclosure : MonoBehaviour
         
         float multipliedAmount = toolMultiplier * materialCalculatedPayout;
         materialCalculatedPayout = (int)multipliedAmount;
-        if (enclosureMaterial != null)
+        if (payoutInMoney)
         {
-            enclosureMaterial.GetComponent<BuildMaterial>().IncreaseAmount(materialCalculatedPayout);
+            playerInventory.GetComponent<PlayerInventory>().AddMoney(materialCalculatedPayout);
         }
         else
         {
-            playerInventory.GetComponent<PlayerInventory>().AddMoney(materialCalculatedPayout);
+            enclosureMaterial.GetComponent<BuildMaterial>().IncreaseAmount(materialCalculatedPayout);
         }
 
     }

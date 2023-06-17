@@ -2000,9 +2000,10 @@ MonoBehaviour:
   maxToolCost: 8
   moneyPayAmount: 0
   materialCalculatedPayout: 0
-  materialTierPayout: 00000000020000000400000006000000080000000a000000
+  materialTierPayout: 0000000003000000060000000a0000000e00000014000000
   isCurrentEnclosure: 0
   enclosureMaterial: {fileID: 8688255873642237784, guid: 9d6b456b855333c4dbbd5e597b91f214, type: 3}
+  payoutInMoney: 0
 --- !u!114 &153154066
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2022,12 +2023,12 @@ MonoBehaviour:
   - {fileID: 203006557880528119}
   - {fileID: 7396219339604125262}
   - {fileID: 7396219339604125262}
-  upgradeCosts: 0a00000019000000320000006400000096000000
-  upgradeWoodCosts: 0000000014000000280000003c00000050000000
+  upgradeCosts: 0a00000032000000960000002c010000f4010000
+  upgradeWoodCosts: 00000000050000001e0000004b000000c8000000
   upgradeLeafCosts: 0000000000000000000000000000000000000000
   upgradeStoneCosts: 0000000000000000000000000000000000000000
-  upgradeIceCosts: 0000000000000000000000001400000032000000
-  tierEarnings: 000000000100000002000000030000000400000005000000
+  upgradeIceCosts: 00000000000000000000000032000000c8000000
+  tierEarnings: 00000000020000000400000006000000080000000a000000
   enclosureLevel: 0
   cameraHolder: {fileID: 4140658300767505974}
   currentlySelected: 0
@@ -3543,7 +3544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &281332049
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6079,7 +6080,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clockPointerPivot: {fileID: 397569013}
-  tickTimeInSec: 2
+  tickTimeInSec: 5
 --- !u!114 &503284892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20317,9 +20318,10 @@ MonoBehaviour:
   maxToolCost: 8
   moneyPayAmount: 0
   materialCalculatedPayout: 0
-  materialTierPayout: 00000000020000000400000006000000080000000a000000
+  materialTierPayout: 00000000050000000a00000010000000160000001e000000
   isCurrentEnclosure: 0
   enclosureMaterial: {fileID: 5591414574153283340, guid: bfa5965c243d7614aab665bfdca86544, type: 3}
+  payoutInMoney: 0
 --- !u!114 &1471360705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20339,12 +20341,12 @@ MonoBehaviour:
   - {fileID: 3304899580463744330}
   - {fileID: 4876963659792052528}
   - {fileID: 4876963659792052528}
-  upgradeCosts: 140000003c00000078000000be000000fa000000
-  upgradeWoodCosts: 0a000000140000001e0000002800000032000000
+  upgradeCosts: 3200000050000000820000002c0100008a020000
+  upgradeWoodCosts: 3c00000064000000af000000fa00000090010000
   upgradeLeafCosts: 00000000320000006400000096000000c8000000
-  upgradeStoneCosts: 0000000000000000000000000000000000000000
+  upgradeStoneCosts: 1e00000000000000000000000000000000000000
   upgradeIceCosts: 0000000000000000000000000000000000000000
-  tierEarnings: 000000000100000002000000030000000400000005000000
+  tierEarnings: 000000000100000002000000040000000600000009000000
   enclosureLevel: 0
   cameraHolder: {fileID: 4140658300767505974}
   currentlySelected: 0
@@ -24791,9 +24793,10 @@ MonoBehaviour:
   maxToolCost: 8
   moneyPayAmount: 0
   materialCalculatedPayout: 0
-  materialTierPayout: 00000000020000000400000006000000080000000a000000
+  materialTierPayout: 0000000003000000060000000a0000000e00000014000000
   isCurrentEnclosure: 0
   enclosureMaterial: {fileID: 8162384855921794880, guid: e93bff4cb20d8b84aba6b61815b56a50, type: 3}
+  payoutInMoney: 0
 --- !u!114 &1838269409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24813,12 +24816,12 @@ MonoBehaviour:
   - {fileID: 4672712857551138685}
   - {fileID: 1030282209941050811}
   - {fileID: 1030282209941050811}
-  upgradeCosts: 2800000064000000a0000000e60000002c010000
-  upgradeWoodCosts: 14000000280000003c0000007800000096000000
-  upgradeLeafCosts: 0000000000000000000000001e0000003c000000
+  upgradeCosts: 28000000640000002c0100002602000020030000
+  upgradeWoodCosts: 140000003c0000006400000096000000e1000000
+  upgradeLeafCosts: 0000000000000000000000003200000078000000
   upgradeStoneCosts: 000000000a000000140000001e00000028000000
   upgradeIceCosts: 0000000000000000000000000000000000000000
-  tierEarnings: 000000000100000002000000030000000400000005000000
+  tierEarnings: 000000000100000002000000040000000600000009000000
   enclosureLevel: 0
   cameraHolder: {fileID: 4140658300767505974}
   currentlySelected: 0
@@ -25964,7 +25967,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1931837930}
   m_LocalRotation: {x: 0.1169845, y: 0.879653, z: -0.28242558, w: 0.36436418}
-  m_LocalPosition: {x: -112.14, y: 231.28, z: 156.7}
+  m_LocalPosition: {x: -111.82, y: 237.13, z: 181.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26593,9 +26596,10 @@ MonoBehaviour:
   maxToolCost: 8
   moneyPayAmount: 0
   materialCalculatedPayout: 0
-  materialTierPayout: 00000000020000000400000006000000080000000a000000
+  materialTierPayout: 0000000003000000060000000a0000000e00000014000000
   isCurrentEnclosure: 0
   enclosureMaterial: {fileID: 7472141611321266786, guid: f120a5cc035b09641953fad04dbb1e7d, type: 3}
+  payoutInMoney: 0
 --- !u!114 &1960520402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26615,12 +26619,12 @@ MonoBehaviour:
   - {fileID: 7752161157426832973}
   - {fileID: 9182416636190946019}
   - {fileID: 9182416636190946019}
-  upgradeCosts: 3200000078000000c80000002201000086010000
+  upgradeCosts: 3c00000078000000c8000000ee020000e8030000
   upgradeWoodCosts: 0000000000000000000000000000000000000000
-  upgradeLeafCosts: 0000000000000000000000000000000000000000
-  upgradeStoneCosts: 14000000280000003c0000005000000064000000
-  upgradeIceCosts: 0000000014000000280000003c00000050000000
-  tierEarnings: 000000000100000002000000030000000400000005000000
+  upgradeLeafCosts: 14000000320000006400000013010000c2010000
+  upgradeStoneCosts: 96000000c80000002c010000f4010000bc020000
+  upgradeIceCosts: 00000000140000003200000064000000c8000000
+  tierEarnings: 000000000100000002000000040000000600000009000000
   enclosureLevel: 0
   cameraHolder: {fileID: 4140658300767505974}
   currentlySelected: 0
@@ -29050,9 +29054,10 @@ MonoBehaviour:
   maxToolCost: 8
   moneyPayAmount: 0
   materialCalculatedPayout: 0
-  materialTierPayout: 0000000004000000080000000c0000001000000014000000
+  materialTierPayout: 0000000004000000080000000e000000140000001e000000
   isCurrentEnclosure: 0
-  enclosureMaterial: {fileID: 0}
+  enclosureMaterial: {fileID: 1563953985493084184, guid: 0d5fb75c2ce1ee6408423fc42d18a273, type: 3}
+  payoutInMoney: 1
 --- !u!114 &2091624123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29072,12 +29077,12 @@ MonoBehaviour:
   - {fileID: 3781506966354277377}
   - {fileID: 6693129845572939940}
   - {fileID: 6693129845572939940}
-  upgradeCosts: 4600000096000000fa00000072010000e0010000
-  upgradeWoodCosts: 0000000000000000000000000000000000000000
+  upgradeCosts: fa000000fa000000fa000000fa000000fa000000
+  upgradeWoodCosts: 320000006400000096000000c8000000fa000000
   upgradeLeafCosts: 0000000000000000000000000000000000000000
-  upgradeStoneCosts: 1e0000003c0000005a0000007800000096000000
-  upgradeIceCosts: 1e00000032000000500000006e00000096000000
-  tierEarnings: 000000000100000002000000030000000400000005000000
+  upgradeStoneCosts: 96000000f000000068010000f4010000ee020000
+  upgradeIceCosts: 3200000096000000040100007c010000f4010000
+  tierEarnings: 000000000200000004000000070000000a0000000f000000
   enclosureLevel: 0
   cameraHolder: {fileID: 4140658300767505974}
   currentlySelected: 0
@@ -30964,6 +30969,7 @@ GameObject:
   - component: {fileID: 2780563769247490032}
   - component: {fileID: 1241119454132064341}
   - component: {fileID: 3953492900449264799}
+  - component: {fileID: 3953492900449264800}
   m_Layer: 0
   m_Name: Giraffe_Level_1
   m_TagString: Selectable
@@ -31169,6 +31175,7 @@ GameObject:
   - component: {fileID: 4553504400442027707}
   - component: {fileID: 621100602965451038}
   - component: {fileID: 3421153505670960596}
+  - component: {fileID: 4553504400442027708}
   m_Layer: 0
   m_Name: Dolfin_Level_1
   m_TagString: Selectable
@@ -31244,6 +31251,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3953492900449264800
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3304899580463744330}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -4607766748765036660, guid: bf05c7934cc097d4c810312864cbc930, type: 3}
 --- !u!4 &4042788138790318834
 Transform:
   m_ObjectHideFlags: 0
@@ -31448,6 +31477,28 @@ Transform:
   m_Father: {fileID: 2091624121}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &4553504400442027708
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3781506966354277377}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7362582170475462663, guid: d94a5a52b52332142a3fa2a3e1a1af30, type: 3}
 --- !u!1 &4672712857551138685
 GameObject:
   m_ObjectHideFlags: 0
@@ -31459,6 +31510,7 @@ GameObject:
   - component: {fileID: 5445730711091557831}
   - component: {fileID: 8952246419079772770}
   - component: {fileID: 6618096715575840424}
+  - component: {fileID: 8952246419079772771}
   m_Layer: 0
   m_Name: Red_Panda_Level_1
   m_TagString: Selectable
@@ -32246,6 +32298,7 @@ GameObject:
   - component: {fileID: 6980269168561077495}
   - component: {fileID: 6300885824619590482}
   - component: {fileID: 8112611373406373784}
+  - component: {fileID: 8112611373406373785}
   m_Layer: 0
   m_Name: Pinguin_Level_1
   m_TagString: Selectable
@@ -32379,6 +32432,28 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &8112611373406373785
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7752161157426832973}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 1385341296136605235, guid: d2f87ff89fc22c3489a0bcda0a21061d, type: 3}
 --- !u!1 &8237904364563195863
 GameObject:
   m_ObjectHideFlags: 0
@@ -32456,6 +32531,28 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4672712857551138685}
+  m_Mesh: {fileID: 8603850409799381950, guid: c0a455589d086f44eaff54b0bdd4e11c, type: 3}
+--- !u!64 &8952246419079772771
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4672712857551138685}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
   m_Mesh: {fileID: 8603850409799381950, guid: c0a455589d086f44eaff54b0bdd4e11c, type: 3}
 --- !u!4 &9052603345757783365
 Transform:
