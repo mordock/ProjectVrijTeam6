@@ -7,22 +7,26 @@ public class Event : ScriptableObject
 {
     public enum NegativeGain
     {
-        noting,
-        money,
-        stone,
-        wood,
-        ice,
-        leaf
+        Yes,
+        No
     }
 
     public enum PositiveGain
     {
-        noting,
-        money,
-        stone,
-        wood,
-        ice,
-        leaf
+        Yes,
+        No
+    }
+
+    public enum PostiveDays
+    {
+        Yes,
+        No
+    }
+
+    public enum NegativeEnclosure
+    {
+        Yes,
+        No
     }
 
     public string eventName;
@@ -36,8 +40,13 @@ public class Event : ScriptableObject
 public struct Option
 {
     public string optionText;
+    [Header("Money/Materials")]
     public Event.NegativeGain negativeGain;
     public Event.PositiveGain positiveGain;
 
     public int amount;
+    public BuildMaterial material;
+    [Header("Days")]
+    public Event.PostiveDays postiveDays;
+    public int dayAmount;
 }

@@ -44,16 +44,4 @@ public class UiManager : MonoBehaviour
         enclosureUI.transform.GetChild(1).GetChild(2).GetComponent<Slider>().value = enclosureScript.currentToolSlider;
         enclosureScript.isCurrentEnclosure = true;
     }
-
-    public void CloseAdminUI()
-    {
-
-    }
-
-    public void OpenAdminUI()
-    {
-
-    }
-
-
 }

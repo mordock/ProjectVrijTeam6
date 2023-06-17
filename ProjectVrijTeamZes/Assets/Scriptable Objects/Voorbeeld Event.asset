@@ -19,8 +19,20 @@ MonoBehaviour:
     negativeGain: 0
     positiveGain: 1
     amount: 5
+    material: {fileID: 696762845275079348, guid: 0d5fb75c2ce1ee6408423fc42d18a273, type: 3}
+    postiveDays: 1
+    dayAmount: 0
+    negativeEnclosure: 1
+    enclosureLevelAmount: 0
+    enclosure: {fileID: 0}
   option2:
     optionText: Optie 2 text
-    negativeGain: 2
-    positiveGain: 0
-    amount: 7
+    negativeGain: 1
+    positiveGain: 1
+    amount: 0
+    material: {fileID: 1955542343114403058, guid: bfa5965c243d7614aab665bfdca86544, type: 3}
+    postiveDays: 1
+    dayAmount: 3
+    negativeEnclosure: 0
+    enclosureLevelAmount: 1
+    enclosure: {fileID: 0}
