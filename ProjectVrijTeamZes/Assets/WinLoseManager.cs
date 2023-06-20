@@ -7,7 +7,9 @@ using TMPro;
 public class WinLoseManager : MonoBehaviour
 {
     public int playDays;
+    public int debtLimit;
     public TextMeshProUGUI maxDayText, currentDayText;
+    public GameObject loseScreen, winScreen;
 
     [HideInInspector] public int currentDay;
     // Start is called before the first frame update
@@ -15,24 +17,28 @@ public class WinLoseManager : MonoBehaviour
     {
         TickManager.DayTick += DayTick;
         UpdateDayUI();
+        winScreen.SetActive(false);
+        loseScreen.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
         if(currentDay > playDays) {
-            Win();
+            Lose();
         }
     }
 
     public void Win() {
         Time.timeScale = 0;
         //open end game popup
+        winScreen.SetActive(true);
     }
 
     public void Lose() {
         Time.timeScale = 0;
         //open end game popup
+        loseScreen.SetActive(true);
     }
 
     private void DayTick(TickManager obj) {

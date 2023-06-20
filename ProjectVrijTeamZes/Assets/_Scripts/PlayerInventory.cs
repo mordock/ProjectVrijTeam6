@@ -33,6 +33,10 @@ public class PlayerInventory : MonoBehaviour
         {
             money++;
         }
+
+        if(money < -1000) {
+            GameObject.Find("GameManager").GetComponent<WinLoseManager>().Lose();
+        }
     }
 
     public void AddMoney(int addedValue) {

@@ -37,6 +37,10 @@ public class AdminManager : MonoBehaviour
     {
         UpdateTopUI();
         UpdateAdminUI();
+
+        if(adminLevel >= 5) {
+            GetComponent<WinLoseManager>().Win();
+        }
     }
 
     public void OpenAdminUI() {
