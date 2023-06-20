@@ -14,7 +14,7 @@ public class UiManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CloseEnclosureUI();
+        //CloseEnclosureUI();
     }
 
     // Update is called once per frame
@@ -32,7 +32,7 @@ public class UiManager : MonoBehaviour
             if (enclosureUiIsOpen && !GetComponent<Tutorial>().isPlayingFirstTutorial && !GetComponent<Tutorial>().isPlayingEnclosureTutorial)
             {
                 cameraHolder.GetComponent<OutlineSelection>().Deselect();
-                GetComponent<EnclosureManager>().currentOpenEnclosure.GetComponentInParent<EnclosureScript>().currentlySelected = false;
+                GetComponent<EnclosureManager>().currentOpenEnclosure.transform.parent.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = false;
                 CloseEnclosureUI();
             }
         }
@@ -42,7 +42,7 @@ public class UiManager : MonoBehaviour
     public void CloseEnclosureUI() {
         if (!GetComponent<Tutorial>().isPlayingEnclosureTutorial)
         {
-            GetComponent<EnclosureManager>().currentOpenEnclosure.GetComponentInParent<EnclosureScript>().currentlySelected = false;
+            GetComponent<EnclosureManager>().currentOpenEnclosure.transform.parent.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = false;
             enclosureUiIsOpen = false;
             if (GetComponent<EnclosureManager>().currentOpenEnclosure != null)
             {

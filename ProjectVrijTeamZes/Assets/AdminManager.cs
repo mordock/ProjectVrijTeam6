@@ -104,7 +104,7 @@ public class AdminManager : MonoBehaviour
         }
 
         for(int i = 0; i < ticketPriceList.transform.childCount; i++) {
-            ticketPriceList.transform.GetChild(i).GetComponent<TextMeshProUGUI>().text = playerInventory.money + "/" + ticketPrices[i].ToString();
+            ticketPriceList.transform.GetChild(i).GetComponent<TextMeshProUGUI>().text = ticketPrices[i].ToString();
         }
     }
 }

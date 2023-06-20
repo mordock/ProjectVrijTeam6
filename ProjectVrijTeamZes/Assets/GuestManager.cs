@@ -43,7 +43,6 @@ public class GuestManager : MonoBehaviour
 
     void SummonGuest()
     {
-        Debug.Log("GUEST");
         cameraHolder.GetComponent<PlayerInventory>().AddMoney(ticketPrice);
         var go = Instantiate(floatingText, floatingTextPos.transform.position, floatingTextPos.transform.rotation, floatingTextPos.transform);
         go.GetComponent<TextMesh>().text = "+$" + ticketPrice.ToString();

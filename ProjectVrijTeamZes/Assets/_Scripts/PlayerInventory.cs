@@ -8,6 +8,7 @@ public class PlayerInventory : MonoBehaviour
 
     public int money;
     public List<int> moneyChanges;
+    public int moneyLoseAmount;
 
     private void Start() {
         //register for tick event
@@ -34,7 +35,7 @@ public class PlayerInventory : MonoBehaviour
             money++;
         }
 
-        if(money < -1000) {
+        if(money < -moneyLoseAmount) {
             GameObject.Find("GameManager").GetComponent<WinLoseManager>().Lose();
         }
     }

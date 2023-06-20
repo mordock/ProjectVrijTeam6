@@ -7,7 +7,6 @@ using TMPro;
 public class WinLoseManager : MonoBehaviour
 {
     public int playDays;
-    public int debtLimit;
     public TextMeshProUGUI maxDayText, currentDayText;
     public GameObject loseScreen, winScreen;
 
