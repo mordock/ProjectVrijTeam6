@@ -45,7 +45,8 @@ public class OutlineSelection : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             GameObject gamemanager = GameObject.Find("GameManager");
-            if(!gamemanager.GetComponent<Tutorial>().isPlayingTutorial){
+            if(!gamemanager.GetComponent<Tutorial>().isPlayingFirstTutorial || !gamemanager.GetComponent<Tutorial>().isPlayingEnclosureTutorial)
+            {
                 if (highlight)
                 {
                     if (selection != null)
@@ -69,16 +70,16 @@ public class OutlineSelection : MonoBehaviour
                         highlight = null;
                     }
                 }
-                else
-                {
-                    if (selection)
-                    {
-                        selection.gameObject.GetComponent<Outline>().enabled = false;
-                        selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = false;
-                        selection = null;
-                    }
-                }
             }
         }
     }
+
+    public void Deselect()
+    {
+        selection.gameObject.GetComponent<Outline>().enabled = false;
+        selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = false;
+        selection = null;
+    }
+
+
 }

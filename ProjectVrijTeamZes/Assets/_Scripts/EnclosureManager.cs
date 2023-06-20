@@ -11,7 +11,10 @@ public class EnclosureManager : MonoBehaviour
     public TextMeshProUGUI happinessPercentage, workPercentage, multiplierText;
     public TextMeshProUGUI materialOutPutText, expenditureText;
     public Image happinessBar, healthBar;
+    public GameObject animalIcon;
     public TextMeshProUGUI enclosureName, animalNames;
+    public GameObject[] enclosureStarsList;
+    public GameObject[] animalIconsList;
 
     // Start is called before the first frame update
     void Start()
@@ -24,20 +27,38 @@ public class EnclosureManager : MonoBehaviour
     {
         UpdateHappinessPercentageUi();
         UpdateHealthPercentageUi();
+        if (currentOpenEnclosure != null)
+        {
+            UpdateFoodSlider(currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().currentFoodValue);
+            UpdateWorkSlider(currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().currentWorkSlider);
+        }
 
         //update material output
-        if(currentOpenEnclosure != null){
-            materialOutPutText.text = "Material Output: " + currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().materialCalculatedPayout.ToString("F2");
-            expenditureText.text = "Expenditure: " + currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().moneyPayAmount.ToString("F2");
-
+        if (currentOpenEnclosure != null){
+            materialOutPutText.text = "Daily Materials\n" + currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().materialCalculatedPayout.ToString("F2");
+            expenditureText.text = "Daily Expenses\n" + currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().moneyPayAmount.ToString("F2");
             //fill top bar with data
-            enclosureName.text = currentOpenEnclosure.transform.parent.gameObject.GetComponent<EnclosureScript>().enclosureName;
-            string names = "";
-            foreach(Animal animal in currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>().animals) {
-                names += animal.animalName + ", ";
+            enclosureName.text = currentOpenEnclosure.transform.parent.gameObject.GetComponent<EnclosureScript>().scientificName;
+            animalNames.text = currentOpenEnclosure.transform.parent.gameObject.GetComponent<EnclosureScript>().enclosureName;
+
+            for (int i = 0; i < animalIconsList.Length; i++)
+            {
+                animalIconsList[i].SetActive(false);
+                currentOpenEnclosure.transform.parent.gameObject.GetComponent<EnclosureScript>().currentAnimalIcon.SetActive(true);
             }
-            //remove last comma
-            animalNames.text = names.Remove(names.Length - 2);
+
+            for (int i = 0; i < enclosureStarsList.Length; i++)
+            {
+                if (i > currentOpenEnclosure.transform.parent.gameObject.GetComponent<EnclosureScript>().enclosureLevel)
+                {
+                    enclosureStarsList[i].SetActive(false);
+                }
+                if (i <= currentOpenEnclosure.transform.parent.gameObject.GetComponent<EnclosureScript>().enclosureLevel)
+                {
+                    enclosureStarsList[i].SetActive(true);
+                }
+            }
+
         }
     }
 

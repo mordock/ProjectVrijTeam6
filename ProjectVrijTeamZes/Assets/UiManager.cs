@@ -21,22 +21,42 @@ public class UiManager : MonoBehaviour
     void Update()
     {
         moneyUI.text = cameraHolder.GetComponent<PlayerInventory>().money.ToString();
+
+        if (Input.GetKeyDown(KeyCode.Escape) && !GetComponent<Tutorial>().isPlayingEnclosureTutorial)
+        {
+            if (GetComponent<UpgradePopup>().upgradePopupOpen)
+            {
+                GetComponent<UpgradePopup>().CloseUpgradePopup();
+            }
+            else
+            if (enclosureUiIsOpen && !GetComponent<Tutorial>().isPlayingFirstTutorial && !GetComponent<Tutorial>().isPlayingEnclosureTutorial)
+            {
+                cameraHolder.GetComponent<OutlineSelection>().Deselect();
+                GetComponent<EnclosureManager>().currentOpenEnclosure.GetComponentInParent<EnclosureScript>().currentlySelected = false;
+                CloseEnclosureUI();
+            }
+        }
+
     }
 
     public void CloseEnclosureUI() {
-        enclosureUI.SetActive(false);
-        enclosureUiIsOpen = false;
-        if(GetComponent<EnclosureManager>().currentOpenEnclosure != null){
-            MoralityEnclosure enclosureScript = GetComponent<EnclosureManager>().currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>();
-            enclosureScript.isCurrentEnclosure = false;
+        if (!GetComponent<Tutorial>().isPlayingEnclosureTutorial)
+        {
+            GetComponent<EnclosureManager>().currentOpenEnclosure.GetComponentInParent<EnclosureScript>().currentlySelected = false;
+            enclosureUiIsOpen = false;
+            if (GetComponent<EnclosureManager>().currentOpenEnclosure != null)
+            {
+                MoralityEnclosure enclosureScript = GetComponent<EnclosureManager>().currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>();
+                enclosureScript.isCurrentEnclosure = false;
+            }
+            GetComponent<EnclosureManager>().currentOpenEnclosure = null;
+            enclosureUI.SetActive(false);
+            cameraHolder.GetComponent<OutlineSelection>().Deselect();
         }
-
-        GetComponent<EnclosureManager>().currentOpenEnclosure = null;
     }
 
     public void OpenEnclosureUI(GameObject enclosure) {
         enclosureUI.SetActive(true);
-
         MoralityEnclosure enclosureScript = GetComponent<EnclosureManager>().currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>();
         //set slider values to current enclosure ones
         enclosureUI.transform.GetChild(1).GetChild(0).GetComponent<Slider>().value = enclosureScript.currentFoodValue;

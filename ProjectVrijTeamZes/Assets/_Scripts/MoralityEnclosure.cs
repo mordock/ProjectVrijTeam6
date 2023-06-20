@@ -73,6 +73,14 @@ public class MoralityEnclosure : MonoBehaviour
                 currentMaterialPayout = materialTierPayout[i];
             }
         }
+
+        //increase materials based on food and work percentage
+        float foodPercentage = Map(currentFoodValue, 0, 1, 0, 0.67f);
+        float workPercentage = Map(currentWorkSlider, 0, 1, 0, 0.33f);
+        materialCalculatedPayout = (int)((workPercentage + foodPercentage) * currentMaterialPayout);
+
+        float multipliedAmount = toolMultiplier * materialCalculatedPayout;
+        materialCalculatedPayout = (int)multipliedAmount;
     }
 
     //method used to display the happiness on the enclosure UI
@@ -106,13 +114,6 @@ public class MoralityEnclosure : MonoBehaviour
             GetComponent<EnclosureScript>().cameraHolder.GetComponent<PlayerInventory>().RemoveMoney(moneyPayAmount);
         }
 
-        //increase materials based on food and work percentage
-        float foodPercentage = Map(currentFoodValue, 0, 1, 0, 0.67f);
-        float workPercentage = Map(currentWorkSlider, 0, 1, 0, 0.33f);
-        materialCalculatedPayout = (int)((workPercentage + foodPercentage) * currentMaterialPayout);
-        
-        float multipliedAmount = toolMultiplier * materialCalculatedPayout;
-        materialCalculatedPayout = (int)multipliedAmount;
         if (payoutInMoney)
         {
             playerInventory.GetComponent<PlayerInventory>().AddMoney(materialCalculatedPayout);
