@@ -17,9 +17,11 @@ public class EnclosureScript : MonoBehaviour
     public bool currentlySelected;
     public GameObject enclosureUI;
     public string enclosureName;
+    public string scientificName;
     private float earningTimer;
     public int earningAmount;
     public float earningCooldown;
+    public GameObject currentAnimalIcon;
 
     private int currentCost;
     private int currentWoodCost;
@@ -54,6 +56,12 @@ public class EnclosureScript : MonoBehaviour
             if (x == enclosureLevel) {
                 earningAmount = tierEarnings[x];
             }
+        }
+
+        if (currentlySelected && !gameManager.GetComponent<Tutorial>().enclosureTutorialDone)
+        {
+            gameManager.GetComponent<Tutorial>().enclosureTutorialDone = true;
+            gameManager.GetComponent<Tutorial>().PlayEnclosureTutorial();
         }
 
         //UI pop-up

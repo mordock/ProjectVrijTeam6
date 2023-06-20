@@ -8,6 +8,7 @@ public class UpgradePopup : MonoBehaviour
 {
     public GameObject upgradePopup;
     public TextMeshProUGUI enclosureName;
+    [HideInInspector] public bool upgradePopupOpen = false;
 
     [Header("Costs")]
     public TextMeshProUGUI moneyCost;
@@ -32,22 +33,31 @@ public class UpgradePopup : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
-
+        if (upgradePopupOpen)
+        {
+            OpenLevel(currentEnclosure.GetComponent<EnclosureScript>().enclosureLevel + 1);
+        }
     }
 
     public void OpenUpgradePopup() {
-        upgradePopup.SetActive(true);
+        if (!GetComponent<Tutorial>().isPlayingEnclosureTutorial)
+        {
+            upgradePopup.SetActive(true);
 
-        currentEnclosure = GetComponent<EnclosureManager>().currentOpenEnclosure.transform.parent.gameObject;
+            currentEnclosure = GetComponent<EnclosureManager>().currentOpenEnclosure.transform.parent.gameObject;
 
-        upgradeButton.onClick.AddListener(delegate { currentEnclosure.GetComponent<EnclosureScript>().AttemptUpgrade(); });
+            upgradeButton.onClick.AddListener(delegate { currentEnclosure.GetComponent<EnclosureScript>().AttemptUpgrade(); });
 
-        OpenLevel(currentEnclosure.GetComponent<EnclosureScript>().enclosureLevel + 1);
+            OpenLevel(currentEnclosure.GetComponent<EnclosureScript>().enclosureLevel + 1);
+
+            upgradePopupOpen = true;
+        }
     }
 
     public void CloseUpgradePopup() {
         upgradePopup.SetActive(false);
         upgradeButton.onClick.RemoveAllListeners();
+        upgradePopupOpen = false;
     }
 
     public void OpenLevel(int level) {
@@ -60,10 +70,10 @@ public class UpgradePopup : MonoBehaviour
         //Change Cost values
         if (level > 0) {
             moneyCost.text = currentEnclosure.GetComponent<EnclosureScript>().upgradeCosts[level - 1].ToString();
-            stoneCost.text = currentEnclosure.GetComponent<EnclosureScript>().upgradeStoneCosts[level - 1].ToString();
-            woodCost.text = currentEnclosure.GetComponent<EnclosureScript>().upgradeWoodCosts[level - 1].ToString();
-            iceCost.text = currentEnclosure.GetComponent<EnclosureScript>().upgradeIceCosts[level - 1].ToString();
-            leafCost.text = currentEnclosure.GetComponent<EnclosureScript>().upgradeLeafCosts[level - 1].ToString();
+            stoneCost.text = GetComponent<MaterialManager>().stone.GetComponent<BuildMaterial>().materialAmount + "/" + currentEnclosure.GetComponent<EnclosureScript>().upgradeStoneCosts[level - 1].ToString();
+            woodCost.text = GetComponent<MaterialManager>().wood.GetComponent<BuildMaterial>().materialAmount + "/" + currentEnclosure.GetComponent<EnclosureScript>().upgradeWoodCosts[level - 1].ToString();
+            iceCost.text = GetComponent<MaterialManager>().ice.GetComponent<BuildMaterial>().materialAmount + "/" + currentEnclosure.GetComponent<EnclosureScript>().upgradeIceCosts[level - 1].ToString();
+            leafCost.text = GetComponent<MaterialManager>().leaf.GetComponent<BuildMaterial>().materialAmount + "/" + currentEnclosure.GetComponent<EnclosureScript>().upgradeLeafCosts[level - 1].ToString();
         } else {
             moneyCost.text = "N/A";
             stoneCost.text = "N/A";
@@ -87,7 +97,7 @@ public class UpgradePopup : MonoBehaviour
         EnclosureScript enclosure = currentEnclosure.GetComponent<EnclosureScript>();
         //change output
         if (level <= 5 && level > 0) {
-            output.text = "+ " + (enclosure.tierEarnings[level] - enclosure.tierEarnings[level - 1]).ToString();
+            output.text = "+ " + (enclosure.GetComponent<MoralityEnclosure>().materialTierPayout[level] - enclosure.GetComponent<MoralityEnclosure>().materialTierPayout[level - 1]).ToString();
         } else {
             output.text = "N/A";
         }

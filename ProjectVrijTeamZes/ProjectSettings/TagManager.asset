@@ -7,6 +7,10 @@ TagManager:
   - Selectable
   - Camera
   - SelectableMain
+  - NegXWall
+  - NegZWall
+  - PosXWall
+  - PosZWall
   layers:
   - Default
   - TransparentFX

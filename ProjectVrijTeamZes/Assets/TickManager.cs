@@ -14,6 +14,8 @@ public class TickManager : MonoBehaviour
 
     private float currentTime;
 
+    [HideInInspector] public bool timePaused;
+
     // Start is called before the first frame update
     void Start() {
 
@@ -21,6 +23,7 @@ public class TickManager : MonoBehaviour
 
     // Update is called once per frame
     void Update() {
+        if (!timePaused)
         currentTime += Time.deltaTime;
         if (currentTime >= tickTimeInSec) {
             currentTime = 0;
