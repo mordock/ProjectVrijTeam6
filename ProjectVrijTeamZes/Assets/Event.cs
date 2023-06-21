@@ -32,6 +32,7 @@ public class Event : ScriptableObject
     public string eventName;
     [TextArea]
     public string eventText;
+    public string eventTextNo;
 
     public Option option1, option2;
 }

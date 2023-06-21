@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc30bc7e49ffeda41a9e18287136b1dc, type: 3}
+  m_Name: Heatwave
+  m_EditorClassIdentifier: 
+  eventName: Heatwave
+  eventText: "It has been a few extraordinarily hot days in a row now, and it\u2019s
+    really starting to affect some of your animals. You could use ice to help cool
+    them down, you estimate around 50 should suffice."
+  eventTextNo: Your Capybaras are stressed out and start munching away at the enclosure.
+    You try to calm them down but to no avail. Repairs cost you 80 wood.
+  option1:
+    optionText: Spend 50 ice
+    negativeGain: 0
+    positiveGain: 1
+    amount: 50
+    material: {fileID: 7614619722632999111, guid: f120a5cc035b09641953fad04dbb1e7d, type: 3}
+    postiveDays: 1
+    dayAmount: 0
+  option2:
+    optionText: Hope for the best
+    negativeGain: 0
+    positiveGain: 1
+    amount: 80
+    material: {fileID: 3586948691516410724, guid: 9d6b456b855333c4dbbd5e597b91f214, type: 3}
+    postiveDays: 1
+    dayAmount: 0

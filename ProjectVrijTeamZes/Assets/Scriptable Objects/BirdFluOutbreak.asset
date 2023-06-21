@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc30bc7e49ffeda41a9e18287136b1dc, type: 3}
+  m_Name: BirdFluOutbreak
+  m_EditorClassIdentifier: 
+  eventName: 'Bird flu outbreak '
+  eventText: The news speaks of a bird flu going around the world, and it seems like
+    cases are getting closer to your zoo. Take precautions for your penguins?
+  eventTextNo: Sadly your penguins are unable to avoid the bird flu, resulting in
+    your zoo having to be closed down until they get better. Their expected recovery
+    time is about two weeks.
+  option1:
+    optionText: Spend 200 coins on precautions
+    negativeGain: 0
+    positiveGain: 1
+    amount: 200
+    material: {fileID: 696762845275079348, guid: 0d5fb75c2ce1ee6408423fc42d18a273, type: 3}
+    postiveDays: 1
+    dayAmount: 0
+  option2:
+    optionText: Take the risk
+    negativeGain: 1
+    positiveGain: 1
+    amount: 0
+    material: {fileID: 1955542343114403058, guid: bfa5965c243d7614aab665bfdca86544, type: 3}
+    postiveDays: 0
+    dayAmount: 14

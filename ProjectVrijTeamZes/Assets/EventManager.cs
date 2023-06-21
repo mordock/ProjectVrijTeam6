@@ -14,7 +14,7 @@ public class EventManager : MonoBehaviour
 
     public GameObject eventUI;
     public TextMeshProUGUI eventName, eventText;
-    public GameObject option1, option2;
+    public GameObject option1, option2, continueButton;
 
     private int currentDaysPast;
     private bool eventIsOpen = false;
@@ -47,9 +47,14 @@ public class EventManager : MonoBehaviour
         }
     }
 
-    public void ShowEvent() {
+    public void ShowEvent()
+    {
         eventIsOpen = true;
         eventUI.SetActive(true);
+        option1.SetActive(true);
+        option2.SetActive(true);
+        continueButton.SetActive(false);
+
 
         int random = UnityEngine.Random.Range(0, events.Count);
         Event currentEvent = events[random];
@@ -62,22 +67,47 @@ public class EventManager : MonoBehaviour
         option2.transform.GetChild(0).GetComponent<TextMeshProUGUI>().text = currentEvent.option2.optionText;
 
         //add onclick to option 1 
-        if (currentEvent.option1.negativeGain == Event.NegativeGain.Yes) {
-            option1.GetComponent<Button>().onClick.AddListener(delegate { DecreaseMaterialButton(currentEvent.option1.amount, currentEvent.option1.material); });
-        } else if(currentEvent.option1.positiveGain == Event.PositiveGain.Yes){
-            option1.GetComponent<Button>().onClick.AddListener(delegate { IncreaseMaterialButton(currentEvent.option1.amount, currentEvent.option1.material); });
-        } else if (currentEvent.option1.postiveDays == Event.PostiveDays.Yes) {
-            option1.GetComponent<Button>().onClick.AddListener(delegate { IncreaseDays(currentEvent.option1.dayAmount); });
+        if (currentEvent.option1.negativeGain == Event.NegativeGain.Yes)
+            {
+                option1.GetComponent<Button>().onClick.AddListener(delegate { DecreaseMaterialButton(currentEvent.option1.amount, currentEvent.option1.material); });
+                option1.GetComponent<Button>().onClick.AddListener(delegate { ResetEvent(); });
+            }
+            else if (currentEvent.option1.positiveGain == Event.PositiveGain.Yes)
+            {
+                option1.GetComponent<Button>().onClick.AddListener(delegate { IncreaseMaterialButton(currentEvent.option1.amount, currentEvent.option1.material); });
+                option1.GetComponent<Button>().onClick.AddListener(delegate { ResetEvent(); });
+            } 
+            else if (currentEvent.option1.postiveDays == Event.PostiveDays.Yes)
+            {
+                option1.GetComponent<Button>().onClick.AddListener(delegate { IncreaseDays(currentEvent.option1.dayAmount); });
+                option1.GetComponent<Button>().onClick.AddListener(delegate { ResetEvent(); });
+            }
+
+            //add onclick to option 2 
+            if (currentEvent.option2.negativeGain == Event.NegativeGain.Yes)
+            {
+                option2.GetComponent<Button>().onClick.AddListener(delegate { DecreaseMaterialButton(currentEvent.option2.amount, currentEvent.option2.material); });
+                option2.GetComponent<Button>().onClick.AddListener(delegate { Option2Code(currentEvent); });
+            }
+            else if (currentEvent.option2.positiveGain == Event.PositiveGain.Yes)
+            {
+                option2.GetComponent<Button>().onClick.AddListener(delegate { IncreaseMaterialButton(currentEvent.option2.amount, currentEvent.option2.material); });
+                option2.GetComponent<Button>().onClick.AddListener(delegate { Option2Code(currentEvent); });
+            }
+            else if (currentEvent.option2.postiveDays == Event.PostiveDays.Yes)
+            {
+                option2.GetComponent<Button>().onClick.AddListener(delegate { IncreaseDays(currentEvent.option2.dayAmount); });
+                option2.GetComponent<Button>().onClick.AddListener(delegate { Option2Code(currentEvent); });
+            }
         }
 
-        //add onclick to option 2 
-        if (currentEvent.option2.negativeGain == Event.NegativeGain.Yes) {
-            option2.GetComponent<Button>().onClick.AddListener(delegate { DecreaseMaterialButton(currentEvent.option2.amount, currentEvent.option2.material); });
-        } else if(currentEvent.option2.positiveGain == Event.PositiveGain.Yes) {
-            option2.GetComponent<Button>().onClick.AddListener(delegate { IncreaseMaterialButton(currentEvent.option2.amount, currentEvent.option2.material); });
-        } else if(currentEvent.option2.postiveDays == Event.PostiveDays.Yes) {
-            option2.GetComponent<Button>().onClick.AddListener(delegate { IncreaseDays(currentEvent.option2.dayAmount); });
-        }
+    private void Option2Code(Event currentEvent)
+    {
+        eventText.text = currentEvent.eventTextNo;
+        option1.gameObject.SetActive(false);
+        option2.gameObject.SetActive(false);
+        continueButton.SetActive(true);
+        Debug.Log("nmfadssdniadjnauidniuasmd");
     }
 
     public void IncreaseMaterialButton(int value, BuildMaterial material) {
@@ -86,7 +116,6 @@ public class EventManager : MonoBehaviour
         } else {
             GetComponent<UiManager>().cameraHolder.GetComponent<PlayerInventory>().money += value;
         }
-        ResetEvent();
     }
 
     public void DecreaseMaterialButton(int value, BuildMaterial material) {
@@ -95,17 +124,15 @@ public class EventManager : MonoBehaviour
         } else {
             GetComponent<UiManager>().cameraHolder.GetComponent<PlayerInventory>().money -= value;
         }
-        ResetEvent();
     }
 
     public void IncreaseDays(int value) {
         GetComponent<WinLoseManager>().currentDay += value;
         GetComponent<WinLoseManager>().UpdateDayUI();
-
-        ResetEvent();
     }
 
-    private void ResetEvent() {
+
+    public void ResetEvent() {
         eventIsOpen = false;
         eventUI.SetActive(false);
         option2.GetComponent<Button>().onClick.RemoveAllListeners();
