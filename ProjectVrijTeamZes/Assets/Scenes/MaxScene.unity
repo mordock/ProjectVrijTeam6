@@ -8022,8 +8022,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events:
+  - {fileID: 11400000, guid: 57138657d055f7344be05874a2029114, type: 2}
+  - {fileID: 11400000, guid: 3137266149435464f806cb9ae7f592e3, type: 2}
   - {fileID: 11400000, guid: 95a67291af4a7054f8d9be170b2a2c18, type: 2}
-  chanceForEvent: 100
+  - {fileID: 11400000, guid: 052f1e2efaba3c8418b5c233a48ecd29, type: 2}
+  chanceForEvent: 15
   minimumAmountBetweenEvents: 4
   eventUI: {fileID: 540985788}
   eventName: {fileID: 472953634}
@@ -37454,7 +37457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23dc4a23048e7a142b670542474c8017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  money: 450
+  money: 200
   moneyChanges: 
   moneyLoseAmount: 1000
 --- !u!114 &4140658300767505977

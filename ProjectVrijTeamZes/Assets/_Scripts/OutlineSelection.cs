@@ -56,7 +56,6 @@ public class OutlineSelection : MonoBehaviour
                     }
                     //main building
                     if (highlight.CompareTag("SelectableMain")) {
-                        Debug.Log("admin");
                         gamemanager.GetComponent<AdminManager>().OpenAdminUI();
                     } else{
                         //enclosures
@@ -80,6 +79,4 @@ public class OutlineSelection : MonoBehaviour
         selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = false;
         selection = null;
     }
-
-
 }

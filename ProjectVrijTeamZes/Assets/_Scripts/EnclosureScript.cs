@@ -60,7 +60,7 @@ public class EnclosureScript : MonoBehaviour
         }
 
         //UI pop-up
-        if (currentlySelected && !enclosureUI.activeSelf) {
+        if (currentlySelected ) {
             gameManager.GetComponent<UiManager>().OpenEnclosureUI(gameObject);
         }
 
