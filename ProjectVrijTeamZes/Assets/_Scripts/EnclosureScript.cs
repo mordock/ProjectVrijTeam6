@@ -35,11 +35,6 @@ public class EnclosureScript : MonoBehaviour
     }
 
     void Update() {
-        for (int i = 0; i < enclosureTiers.Length; i++) {
-            enclosureTiers[i].SetActive(false);
-            enclosureTiers[enclosureLevel].SetActive(true);
-        }
-
         for (int z = 0; z < upgradeCosts.Length; z++) {
             if (z == enclosureLevel) {
                 if (z < upgradeCosts.Length) {
@@ -83,20 +78,26 @@ public class EnclosureScript : MonoBehaviour
     }
 
     public void AttemptUpgrade() {
+        MaterialManager materialManager = gameManager.GetComponent<MaterialManager>();
         //Upgrade if player has enough materials
-        if (gameManager.GetComponent<MaterialManager>().wood.GetComponent<BuildMaterial>().materialAmount >= currentWoodCost
-            && gameManager.GetComponent<MaterialManager>().leaf.GetComponent<BuildMaterial>().materialAmount >= currentLeafCost
-            && gameManager.GetComponent<MaterialManager>().stone.GetComponent<BuildMaterial>().materialAmount >= currentStoneCost
-            && gameManager.GetComponent<MaterialManager>().ice.GetComponent<BuildMaterial>().materialAmount >= currentIceCost) {
+        if (materialManager.wood.GetComponent<BuildMaterial>().materialAmount >= currentWoodCost
+            && materialManager.leaf.GetComponent<BuildMaterial>().materialAmount >= currentLeafCost
+            && materialManager.stone.GetComponent<BuildMaterial>().materialAmount >= currentStoneCost
+            && materialManager.ice.GetComponent<BuildMaterial>().materialAmount >= currentIceCost) {
             cameraHolder.GetComponent<PlayerInventory>().money -= currentCost;
-            gameManager.GetComponent<MaterialManager>().wood.GetComponent<BuildMaterial>().materialAmount -= currentWoodCost;
-            gameManager.GetComponent<MaterialManager>().leaf.GetComponent<BuildMaterial>().materialAmount -= currentLeafCost;
-            gameManager.GetComponent<MaterialManager>().stone.GetComponent<BuildMaterial>().materialAmount -= currentStoneCost;
-            gameManager.GetComponent<MaterialManager>().ice.GetComponent<BuildMaterial>().materialAmount -= currentIceCost;
+            materialManager.wood.GetComponent<BuildMaterial>().materialAmount -= currentWoodCost;
+            materialManager.leaf.GetComponent<BuildMaterial>().materialAmount -= currentLeafCost;
+            materialManager.stone.GetComponent<BuildMaterial>().materialAmount -= currentStoneCost;
+            materialManager.ice.GetComponent<BuildMaterial>().materialAmount -= currentIceCost;
             enclosureLevel++;
             earningTimer = earningCooldown;
             gameManager.GetComponent<GuestManager>().AddChance(3);
             gameManager.GetComponent<UpgradePopup>().Upgrade();
+
+            for (int i = 0; i < enclosureTiers.Length; i++) {
+                enclosureTiers[i].SetActive(false);
+                enclosureTiers[enclosureLevel].SetActive(true);
+            }
         } else {
             Debug.Log("Not enough materials");
         }

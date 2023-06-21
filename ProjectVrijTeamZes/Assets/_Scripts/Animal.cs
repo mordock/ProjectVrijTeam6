@@ -62,7 +62,8 @@ public class Animal : MonoBehaviour
 
         //animal dies
         if (healthLevel <= 0) {
-            Debug.Log("Yo " + animalName + " fcking died");
+            healthLevel = 0;
+            Debug.Log(animalName + " died");
         }
 
         if(happinessLevel <= 0) {
