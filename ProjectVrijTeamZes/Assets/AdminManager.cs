@@ -37,10 +37,7 @@ public class AdminManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
         if(adminLevel >= 5) {
-            Debug.Log("meip");
             GetComponent<WinLoseManager>().Win();
         } else {
             UpdateTopUI();

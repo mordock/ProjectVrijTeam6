@@ -101,7 +101,5 @@ public class EnclosureScript : MonoBehaviour
         } else {
             Debug.Log("Not enough materials");
         }
-
     }
-
 }

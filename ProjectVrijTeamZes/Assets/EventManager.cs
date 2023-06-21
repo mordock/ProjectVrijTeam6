@@ -107,7 +107,6 @@ public class EventManager : MonoBehaviour
         option1.gameObject.SetActive(false);
         option2.gameObject.SetActive(false);
         continueButton.SetActive(true);
-        Debug.Log("nmfadssdniadjnauidniuasmd");
     }
 
     public void IncreaseMaterialButton(int value, BuildMaterial material) {

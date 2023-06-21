@@ -75,7 +75,5 @@ public class CameraMove : MonoBehaviour
     public void TurnDragOff()
     {
         enclosureUISelected = true;
-        Debug.Log("check");
     }
-
 }

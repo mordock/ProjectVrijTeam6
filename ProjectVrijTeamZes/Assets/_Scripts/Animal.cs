@@ -69,6 +69,9 @@ public class Animal : MonoBehaviour
         if(happinessLevel <= 0) {
             happinessLevel = 0;
         }
+        if(happinessLevel >= 100) {
+            happinessLevel = 100;
+        }
 
         if (Input.GetKeyDown(KeyCode.P))
         {

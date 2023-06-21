@@ -59,7 +59,6 @@ public class UiManager : MonoBehaviour
         enclosureUI.SetActive(true);
         MoralityEnclosure enclosureScript = GetComponent<EnclosureManager>().currentOpenEnclosure.transform.parent.gameObject.GetComponent<MoralityEnclosure>();
         //set slider values to current enclosure ones
-        Debug.Log(enclosureScript.currentFoodValue);
         enclosureUI.transform.GetChild(1).GetChild(0).GetComponent<Slider>().value = enclosureScript.currentFoodValue;
         enclosureUI.transform.GetChild(1).GetChild(1).GetComponent<Slider>().value = enclosureScript.currentWorkSlider;
         enclosureUI.transform.GetChild(1).GetChild(2).GetComponent<Slider>().value = enclosureScript.currentToolSlider;

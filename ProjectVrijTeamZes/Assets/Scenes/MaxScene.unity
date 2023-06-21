@@ -8026,7 +8026,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3137266149435464f806cb9ae7f592e3, type: 2}
   - {fileID: 11400000, guid: 95a67291af4a7054f8d9be170b2a2c18, type: 2}
   - {fileID: 11400000, guid: 052f1e2efaba3c8418b5c233a48ecd29, type: 2}
-  chanceForEvent: 15
+  chanceForEvent: 100
   minimumAmountBetweenEvents: 4
   eventUI: {fileID: 540985788}
   eventName: {fileID: 472953634}
