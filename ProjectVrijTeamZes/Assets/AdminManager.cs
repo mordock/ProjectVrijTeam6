@@ -7,7 +7,9 @@ using TMPro;
 public class AdminManager : MonoBehaviour
 {
     public List<int> ticketPrices;
-    public GameObject adminUI; 
+    public GameObject adminUI;
+    public List<GameObject> flavourObjectsLevel1;
+    public List<GameObject> flavourObjectsLevel4;
 
     public List<int> upgradePrices;
 
@@ -35,11 +37,14 @@ public class AdminManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        UpdateTopUI();
-        UpdateAdminUI();
+        
 
         if(adminLevel >= 5) {
+            Debug.Log("meip");
             GetComponent<WinLoseManager>().Win();
+        } else {
+            UpdateTopUI();
+            UpdateAdminUI();
         }
     }
 
@@ -76,6 +81,17 @@ public class AdminManager : MonoBehaviour
             adminLevel++;
             playerInventory.RemoveMoney(currentPrice);
             tooExpensiveImage.gameObject.SetActive(false);
+        }
+
+        //change admin to level 4, fix later to an actual system
+        if(adminLevel >= 4) {
+            foreach(GameObject gameObject in flavourObjectsLevel4) {
+                gameObject.SetActive(true);
+            }
+
+            foreach (GameObject gameObject in flavourObjectsLevel1) {
+                gameObject.SetActive(false);
+            }
         }
     }
 
