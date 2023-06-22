@@ -75,8 +75,10 @@ public class OutlineSelection : MonoBehaviour
 
     public void Deselect()
     {
-        selection.gameObject.GetComponent<Outline>().enabled = false;
-        selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = false;
-        selection = null;
+        if(selection != null){
+            selection.gameObject.GetComponent<Outline>().enabled = false;
+            selection.gameObject.GetComponentInParent<EnclosureScript>().currentlySelected = false;
+            selection = null;
+        }
     }
 }
