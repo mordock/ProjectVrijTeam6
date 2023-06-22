@@ -45,5 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   materialName: Ice
-  materialAmount: 10000
+  materialAmount: 50000
   icon: {fileID: 21300000, guid: 0f5d6cd84889d0a4cb191f4a020f86ba, type: 3}

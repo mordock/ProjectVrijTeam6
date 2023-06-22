@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc30bc7e49ffeda41a9e18287136b1dc, type: 3}
+  m_Name: PublicImage
+  m_EditorClassIdentifier: 
+  eventName: 'Public image '
+  eventText: 'One of your employees is accused of assaulting a visitor and the victim
+    is pressing charges. Do you choose to fire the employee and pay compensation
+    to the victim to avoid possible backlash on social media, or hold your ground
+    and support your employee?
+
+'
+  eventTextNo: 'You use CCTV footage showing definitive proof that the employee did
+    nothing wrong. You successfully countersue for slander and are awarded 300 coins. '
+  option1:
+    optionText: Pay 100 coins as compensation
+    negativeGain: 0
+    positiveGain: 1
+    amount: 100
+    material: {fileID: 696762845275079348, guid: 0d5fb75c2ce1ee6408423fc42d18a273, type: 3}
+    postiveDays: 1
+    dayAmount: 0
+  option2:
+    optionText: Take your chances in court
+    negativeGain: 1
+    positiveGain: 0
+    amount: 300
+    material: {fileID: 1955542343114403058, guid: bfa5965c243d7614aab665bfdca86544, type: 3}
+    postiveDays: 1
+    dayAmount: 0

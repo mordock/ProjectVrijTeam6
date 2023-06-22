@@ -19,26 +19,27 @@ public class MoralityEnclosure : MonoBehaviour
     [HideInInspector] public bool isCurrentEnclosure;
     public GameObject enclosureMaterial;
     private EnclosureScript enclosureScript;
+    public bool payoutInMoney;
     // Start is called before the first frame update
     void Start() {
         //set inital food slider value
-        //currentFoodValue = 0.7f;
-        //float foodHappiness = Map(currentFoodValue, 0.4f, 0.9f, 10, 100);
-        //animals.ForEach(animal => {
-        //    animal.happinessChanges[0] = (int)foodHappiness;
-        //});
+        currentFoodValue = 0.7f;
+        float foodHappiness = Map(currentFoodValue, 0.4f, 0.9f, 10, 100);
+        animals.ForEach(animal => {
+            animal.happinessChanges[0] = (int)foodHappiness;
+        });
 
-        ////set intial work slider value
-        //currentWorkSlider = 0.25f;
-        //float workHappiness = Map(currentWorkSlider, 0, 0.8f, 0, -40);
-        //animals.ForEach(animal => {
-        //    animal.happinessChanges[1] = (int)workHappiness;
-        //});
+        //set intial work slider value
+        currentWorkSlider = 0.25f;
+        float workHappiness = Map(currentWorkSlider, 0, 0.8f, 0, -40);
+        animals.ForEach(animal => {
+            animal.happinessChanges[1] = (int)workHappiness;
+        });
 
-        ////set inital animal happiness
-        //animals.ForEach(animal => {
-        //    animal.UpdateHappinessAndHealth();
-        //});
+        //set inital animal happiness
+        animals.ForEach(animal => {
+            animal.UpdateHappinessAndHealth();
+        });
 
         currentToolSlider = 0f;
         toolMultiplier = 1;
@@ -67,13 +68,19 @@ public class MoralityEnclosure : MonoBehaviour
             }
         }
 
-        //for (int i = 0; i < enclosureScript.enclosureTiers.Length; i++)
-        //{
-        //    if (i == enclosureScript.enclosureLevel)
-        //    {
-        //        currentMaterialPayout = materialTierPayout[i];
-        //    }
-        //}
+        for (int i = 0; i < enclosureScript.enclosureTiers.Length; i++) {
+            if (i == enclosureScript.enclosureLevel) {
+                currentMaterialPayout = materialTierPayout[i];
+            }
+        }
+
+        //increase materials based on food and work percentage
+        float foodPercentage = Map(currentFoodValue, 0, 1, 0, 0.67f);
+        float workPercentage = Map(currentWorkSlider, 0, 1, 0, 0.33f);
+        materialCalculatedPayout = (int)((workPercentage + foodPercentage) * currentMaterialPayout);
+
+        float multipliedAmount = toolMultiplier * materialCalculatedPayout;
+        materialCalculatedPayout = (int)multipliedAmount;
     }
 
     //method used to display the happiness on the enclosure UI
@@ -107,20 +114,13 @@ public class MoralityEnclosure : MonoBehaviour
             GetComponent<EnclosureScript>().cameraHolder.GetComponent<PlayerInventory>().RemoveMoney(moneyPayAmount);
         }
 
-        //increase materials based on food and work percentage
-        float foodPercentage = Map(currentFoodValue, 0, 1, 0, 0.67f);
-        float workPercentage = Map(currentWorkSlider, 0, 1, 0, 0.33f);
-        materialCalculatedPayout = (int)((workPercentage + foodPercentage) * currentMaterialPayout);
-        
-        float multipliedAmount = toolMultiplier * materialCalculatedPayout;
-        materialCalculatedPayout = (int)multipliedAmount;
-        if (enclosureMaterial != null)
+        if (payoutInMoney)
         {
-            enclosureMaterial.GetComponent<BuildMaterial>().IncreaseAmount(materialCalculatedPayout);
+            playerInventory.GetComponent<PlayerInventory>().AddMoney(materialCalculatedPayout);
         }
         else
         {
-            playerInventory.GetComponent<PlayerInventory>().AddMoney(materialCalculatedPayout);
+            enclosureMaterial.GetComponent<BuildMaterial>().IncreaseAmount(materialCalculatedPayout);
         }
 
     }

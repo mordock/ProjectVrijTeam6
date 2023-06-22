@@ -22,7 +22,6 @@ public class Animal : MonoBehaviour
     public Vector3 targetPos;
     public float elapsedTime;
     public float timeBeforeMovement = 2f;
-    private bool againstWall;
 
     private Animator animalAnimator;
 
@@ -63,17 +62,19 @@ public class Animal : MonoBehaviour
 
         //animal dies
         if (healthLevel <= 0) {
-            Debug.Log("Yo " + animalName + " fcking died");
+            healthLevel = 0;
+            Debug.Log(animalName + " died");
         }
 
         if(happinessLevel <= 0) {
             happinessLevel = 0;
         }
+        if(happinessLevel >= 100) {
+            happinessLevel = 100;
+        }
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            Debug.Log("yap");
-            againstWall = true;
             animalAnimator.SetBool("Walking", true);
             currentPos = transform.position;
             randomDirection = new Vector3(UnityEngine.Random.Range(-3.0f, 3.0f), 0, UnityEngine.Random.Range(1.0f, 3.0f));
@@ -128,8 +129,6 @@ public class Animal : MonoBehaviour
     {
         if (other.CompareTag("PosXWall"))
         {
-            Debug.Log("posX" + gameObject);
-            againstWall = true;
             animalAnimator.SetBool("Walking", true);
             currentPos = transform.position;
             randomDirection = new Vector3(UnityEngine.Random.Range(1.0f, 3.0f), 0, UnityEngine.Random.Range(-3.0f, 3.0f));
@@ -140,8 +139,6 @@ public class Animal : MonoBehaviour
 
         if (other.CompareTag("NegXWall"))
         {
-            Debug.Log("negX" + gameObject);
-            againstWall = true;
             animalAnimator.SetBool("Walking", true);
             currentPos = transform.position;
             randomDirection = new Vector3(UnityEngine.Random.Range(-1.0f, -3.0f), 0, UnityEngine.Random.Range(-3.0f, 3.0f));
@@ -152,8 +149,6 @@ public class Animal : MonoBehaviour
 
         if (other.CompareTag("PosZWall"))
         {
-            Debug.Log("posZ" + gameObject);
-            againstWall = true;
             animalAnimator.SetBool("Walking", true);
             currentPos = transform.position;
             randomDirection = new Vector3(UnityEngine.Random.Range(-3.0f, 3.0f), 0, UnityEngine.Random.Range(1.0f, 3.0f));
@@ -164,8 +159,6 @@ public class Animal : MonoBehaviour
 
         if (other.CompareTag("NegZWall"))
         {
-            Debug.Log("negZ" + gameObject);
-            againstWall = true;
             animalAnimator.SetBool("Walking", true);
             currentPos = transform.position;
             randomDirection = new Vector3(UnityEngine.Random.Range(-3.0f, 3.0f), 0, UnityEngine.Random.Range(-1.0f, -3.0f));
@@ -173,11 +166,6 @@ public class Animal : MonoBehaviour
             elapsedTime = 0f;
             timeBeforeMovement = UnityEngine.Random.Range(1.5f, 10f);
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        againstWall = false;
     }
 
     private void DayTick(TickManager obj) {

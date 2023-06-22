@@ -12,7 +12,10 @@ public class MaterialManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        wood.GetComponent<BuildMaterial>().materialAmount = 5000;
+        stone.GetComponent<BuildMaterial>().materialAmount = 5000;
+        ice.GetComponent<BuildMaterial>().materialAmount = 5000;
+        leaf.GetComponent<BuildMaterial>().materialAmount = 5000;
     }
 
     // Update is called once per frame
